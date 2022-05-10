@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeHeaderView: UIView {
+class HomeHeaderButton: UIButton {
 
     private let envelopImageView: UIImageView = {
         let envelop = UIImage(systemName: "envelope")

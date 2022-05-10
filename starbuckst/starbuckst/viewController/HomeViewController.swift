@@ -10,28 +10,34 @@ import UIKit
 class HomeViewController: UIViewController {
     static let identifier = "HomeViewController"
     
-    private let headerView: UIView = HomeHeaderView()
+    private let headerButton: UIButton = HomeHeaderButton()
     
     override func viewDidLoad() {
-        headerView.backgroundColor = .systemGray3
+        headerButton.backgroundColor = .systemGray3
         setViews()
         setViewConstraints()
     }
     
     private func setViews() {
-        self.view.addSubview(headerView)
+        self.view.addSubview(headerButton)
+        headerButton.addTarget(self, action: #selector(touchedHeaderButton), for: .touchUpInside)
     }
     
     private func setViewConstraints() {
-        configureHeaderViewConstraint()
+        configureHeaderButtonConstraint()
     }
     
-    private func configureHeaderViewConstraint() {
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+    private func configureHeaderButtonConstraint() {
+        headerButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            headerView.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
-            headerView.heightAnchor.constraint(equalToConstant: 50)
+            headerButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            headerButton.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
+            headerButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc
+    private func touchedHeaderButton() {
+        // 다음 what's new 화면으로 이동
     }
 }
