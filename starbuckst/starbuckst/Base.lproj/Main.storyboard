@@ -8,42 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Order-->
-        <scene sceneID="w8H-oI-QSJ">
-            <objects>
-                <viewController id="rcm-w4-rOT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G7D-Df-zC7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="uav-gj-ccw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Order" image="cup.and.saucer" catalog="system" selectedImage="cup.and.saucer.fill" id="LLj-VE-kGZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b4h-cz-6Jb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1728" y="-145"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="V2f-48-OEV">
-            <objects>
-                <viewController id="Kf6-sQ-Ieu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2zH-9C-lig">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="4mT-eH-9Ts"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="Xg3-AW-qVc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5dz-lz-BCq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="799" y="-557"/>
-        </scene>
-        <!--Tab Bar Controller-->
+        <!--Main View Controller-->
         <scene sceneID="OXp-Xb-bFI">
             <objects>
-                <tabBarController id="BKq-e0-x4Y" sceneMemberID="viewController">
+                <tabBarController id="BKq-e0-x4Y" customClass="MainViewController" customModule="starbuckst" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A0u-Ur-UNv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -66,6 +34,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQo-Ez-6y5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-216" y="-145"/>
+        </scene>
+        <!--Order-->
+        <scene sceneID="w8H-oI-QSJ">
+            <objects>
+                <viewController id="rcm-w4-rOT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G7D-Df-zC7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uav-gj-ccw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Order" image="cup.and.saucer" catalog="system" selectedImage="cup.and.saucer.fill" id="LLj-VE-kGZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4h-cz-6Jb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1728" y="-145"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="V2f-48-OEV">
+            <objects>
+                <viewController id="Kf6-sQ-Ieu" customClass="HomeViewController" customModule="starbuckst" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2zH-9C-lig">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4mT-eH-9Ts"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="Xg3-AW-qVc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5dz-lz-BCq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="-557"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="mS9-0l-EbU">

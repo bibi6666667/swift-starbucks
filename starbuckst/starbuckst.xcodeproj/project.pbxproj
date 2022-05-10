@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0095729D282A05630018DC61 /* HomeVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729C282A05630018DC61 /* HomeVerticalScrollView.swift */; };
+		0095729F282A05D20018DC61 /* HomeYourReccommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729E282A05D20018DC61 /* HomeYourReccommandView.swift */; };
+		009572A5282A08200018DC61 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572A4282A08200018DC61 /* HomeHeaderView.swift */; };
+		009572A8282A0D8B0018DC61 /* HomeScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572A7282A0D8B0018DC61 /* HomeScrollContentView.swift */; };
 		00B99ED328290A0500A4B2B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99ED228290A0500A4B2B6 /* AppDelegate.swift */; };
 		00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99ED428290A0500A4B2B6 /* SceneDelegate.swift */; };
 		00B99ED728290A0500A4B2B6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99ED628290A0500A4B2B6 /* MainViewController.swift */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0095729C282A05630018DC61 /* HomeVerticalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVerticalScrollView.swift; sourceTree = "<group>"; };
+		0095729E282A05D20018DC61 /* HomeYourReccommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourReccommandView.swift; sourceTree = "<group>"; };
+		009572A4282A08200018DC61 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		009572A7282A0D8B0018DC61 /* HomeScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScrollContentView.swift; sourceTree = "<group>"; };
 		00B99ECF28290A0500A4B2B6 /* starbuckst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = starbuckst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B99ED228290A0500A4B2B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00B99ED428290A0500A4B2B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0095729B282A05240018DC61 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0095729C282A05630018DC61 /* HomeVerticalScrollView.swift */,
+				009572A4282A08200018DC61 /* HomeHeaderView.swift */,
+				009572A7282A0D8B0018DC61 /* HomeScrollContentView.swift */,
+				0095729E282A05D20018DC61 /* HomeYourReccommandView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		009572A6282A0C150018DC61 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				00B99ED628290A0500A4B2B6 /* MainViewController.swift */,
+				00B99EE62829562D00A4B2B6 /* HomeViewController.swift */,
+				00B99EE82829563700A4B2B6 /* OrderViewController.swift */,
+				00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		00B99EC628290A0500A4B2B6 = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +92,10 @@
 		00B99ED128290A0500A4B2B6 /* starbuckst */ = {
 			isa = PBXGroup;
 			children = (
+				0095729B282A05240018DC61 /* view */,
 				00B99ED228290A0500A4B2B6 /* AppDelegate.swift */,
 				00B99ED428290A0500A4B2B6 /* SceneDelegate.swift */,
-				00B99ED628290A0500A4B2B6 /* MainViewController.swift */,
-				00B99EE62829562D00A4B2B6 /* HomeViewController.swift */,
-				00B99EE82829563700A4B2B6 /* OrderViewController.swift */,
-				00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */,
+				009572A6282A0C150018DC61 /* viewController */,
 				00B99ED828290A0500A4B2B6 /* Main.storyboard */,
 				00B99EDB28290A0700A4B2B6 /* Assets.xcassets */,
 				00B99EDD28290A0700A4B2B6 /* LaunchScreen.storyboard */,
@@ -148,7 +176,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B99ED728290A0500A4B2B6 /* MainViewController.swift in Sources */,
+				0095729D282A05630018DC61 /* HomeVerticalScrollView.swift in Sources */,
 				00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */,
+				009572A5282A08200018DC61 /* HomeHeaderView.swift in Sources */,
+				009572A8282A0D8B0018DC61 /* HomeScrollContentView.swift in Sources */,
+				0095729F282A05D20018DC61 /* HomeYourReccommandView.swift in Sources */,
 				00B99ED328290A0500A4B2B6 /* AppDelegate.swift in Sources */,
 				00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */,
 				00B99EEB2829563E00A4B2B6 /* FavoriteViewController.swift in Sources */,
