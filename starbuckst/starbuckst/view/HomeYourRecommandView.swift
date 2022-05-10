@@ -1,5 +1,5 @@
 //
-//  HomeScrollContentView.swift
+//  HomeYourReccommandView.swift
 //  starbuckst
 //
 //  Created by Bibi on 2022/05/10.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeScrollContentView: UIView {
+class HomeYourRecommandView: UICollectionView {
 
     /*
     // Only override draw() if you perform custom drawing.
