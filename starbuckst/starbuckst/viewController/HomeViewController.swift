@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     
     private let headerButton: UIButton = HomeHeaderButton()
     
-    private let scrollView = HomeVerticalScrollView()
+    private let scrollView = UIScrollView()
     private let contentView = HomeVerticalScrollContentView()
     
     override func viewDidLoad() {
@@ -32,17 +32,13 @@ class HomeViewController: UIViewController {
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        scrollView.contentSize = CGSize(width: contentView.bounds.width, height: contentView.bounds.height * 2)
-        
-        scrollView.backgroundColor = .brown
-        contentView.backgroundColor = .systemPink
+        scrollView.backgroundColor = .systemGray3
     }
     
     private func setViewConstraints() {
         configureHeaderButtonConstraint()
         configureVerticalScrollViewConstraint()
         configureContentViewConstraint()
-        // configureContentUILabelConstraint()
     }
     
     private func configureHeaderButtonConstraint() {
@@ -62,7 +58,6 @@ class HomeViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            //verticalScrollView.widthAnchor.constraint(equalToConstant: self.view.bounds.width)
         ])
     }
     

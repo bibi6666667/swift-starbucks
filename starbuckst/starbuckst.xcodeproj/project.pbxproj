@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0095729D282A05630018DC61 /* HomeVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729C282A05630018DC61 /* HomeVerticalScrollView.swift */; };
 		0095729F282A05D20018DC61 /* HomeYourRecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729E282A05D20018DC61 /* HomeYourRecommandView.swift */; };
 		009572A5282A08200018DC61 /* HomeHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572A4282A08200018DC61 /* HomeHeaderButton.swift */; };
 		009572AA282A37A40018DC61 /* HomeVerticalScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572A9282A37A40018DC61 /* HomeVerticalScrollContentView.swift */; };
@@ -23,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0095729C282A05630018DC61 /* HomeVerticalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVerticalScrollView.swift; sourceTree = "<group>"; };
 		0095729E282A05D20018DC61 /* HomeYourRecommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandView.swift; sourceTree = "<group>"; };
 		009572A4282A08200018DC61 /* HomeHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderButton.swift; sourceTree = "<group>"; };
 		009572A9282A37A40018DC61 /* HomeVerticalScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVerticalScrollContentView.swift; sourceTree = "<group>"; };
@@ -55,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				009572A4282A08200018DC61 /* HomeHeaderButton.swift */,
-				0095729C282A05630018DC61 /* HomeVerticalScrollView.swift */,
 				009572A9282A37A40018DC61 /* HomeVerticalScrollContentView.swift */,
 				0095729E282A05D20018DC61 /* HomeYourRecommandView.swift */,
 			);
@@ -176,7 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B99ED728290A0500A4B2B6 /* MainViewController.swift in Sources */,
-				0095729D282A05630018DC61 /* HomeVerticalScrollView.swift in Sources */,
 				00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */,
 				009572A5282A08200018DC61 /* HomeHeaderButton.swift in Sources */,
 				0095729F282A05D20018DC61 /* HomeYourRecommandView.swift in Sources */,
