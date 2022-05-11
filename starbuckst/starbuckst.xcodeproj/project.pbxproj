@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0095729F282A05D20018DC61 /* HomeYourRecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729E282A05D20018DC61 /* HomeYourRecommandView.swift */; };
+		009572A5282A08200018DC61 /* HomeHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572A4282A08200018DC61 /* HomeHeaderButton.swift */; };
+		009572AA282A37A40018DC61 /* HomeVerticalScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572A9282A37A40018DC61 /* HomeVerticalScrollContentView.swift */; };
 		00B99ED328290A0500A4B2B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99ED228290A0500A4B2B6 /* AppDelegate.swift */; };
 		00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99ED428290A0500A4B2B6 /* SceneDelegate.swift */; };
 		00B99ED728290A0500A4B2B6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99ED628290A0500A4B2B6 /* MainViewController.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0095729E282A05D20018DC61 /* HomeYourRecommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandView.swift; sourceTree = "<group>"; };
+		009572A4282A08200018DC61 /* HomeHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderButton.swift; sourceTree = "<group>"; };
+		009572A9282A37A40018DC61 /* HomeVerticalScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVerticalScrollContentView.swift; sourceTree = "<group>"; };
 		00B99ECF28290A0500A4B2B6 /* starbuckst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = starbuckst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B99ED228290A0500A4B2B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00B99ED428290A0500A4B2B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0095729B282A05240018DC61 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				009572A4282A08200018DC61 /* HomeHeaderButton.swift */,
+				009572A9282A37A40018DC61 /* HomeVerticalScrollContentView.swift */,
+				0095729E282A05D20018DC61 /* HomeYourRecommandView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		009572A6282A0C150018DC61 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				00B99ED628290A0500A4B2B6 /* MainViewController.swift */,
+				00B99EE62829562D00A4B2B6 /* HomeViewController.swift */,
+				00B99EE82829563700A4B2B6 /* OrderViewController.swift */,
+				00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		00B99EC628290A0500A4B2B6 = {
 			isa = PBXGroup;
 			children = (
@@ -64,10 +91,8 @@
 			children = (
 				00B99ED228290A0500A4B2B6 /* AppDelegate.swift */,
 				00B99ED428290A0500A4B2B6 /* SceneDelegate.swift */,
-				00B99ED628290A0500A4B2B6 /* MainViewController.swift */,
-				00B99EE62829562D00A4B2B6 /* HomeViewController.swift */,
-				00B99EE82829563700A4B2B6 /* OrderViewController.swift */,
-				00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */,
+				0095729B282A05240018DC61 /* view */,
+				009572A6282A0C150018DC61 /* viewController */,
 				00B99ED828290A0500A4B2B6 /* Main.storyboard */,
 				00B99EDB28290A0700A4B2B6 /* Assets.xcassets */,
 				00B99EDD28290A0700A4B2B6 /* LaunchScreen.storyboard */,
@@ -149,9 +174,12 @@
 			files = (
 				00B99ED728290A0500A4B2B6 /* MainViewController.swift in Sources */,
 				00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */,
+				009572A5282A08200018DC61 /* HomeHeaderButton.swift in Sources */,
+				0095729F282A05D20018DC61 /* HomeYourRecommandView.swift in Sources */,
 				00B99ED328290A0500A4B2B6 /* AppDelegate.swift in Sources */,
 				00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */,
 				00B99EEB2829563E00A4B2B6 /* FavoriteViewController.swift in Sources */,
+				009572AA282A37A40018DC61 /* HomeVerticalScrollContentView.swift in Sources */,
 				00B99EE72829562D00A4B2B6 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
