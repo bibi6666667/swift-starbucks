@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let contentView = HomeVerticalScrollContentView()
     
-    private let yourRecommandView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
         setViews()
         setViewConstraints()
     }
+    //MARK: child view controller 관계 설정하고 HomeVC에 추가하기
     
     private func setViews() {
         self.view.addSubview(headerButton)
@@ -33,15 +34,12 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        
-        self.view.addSubview(yourRecommandView)
     }
     
     private func setViewConstraints() {
         configureHeaderButtonConstraint()
         configureVerticalScrollViewConstraint()
         configureContentViewConstraint()
-        configureYourRecommandViewConstraint()
     }
     
     private func configureHeaderButtonConstraint() {
@@ -77,17 +75,6 @@ class HomeViewController: UIViewController {
         
     }
     
-    // MARK : 이걸 HomeVerticalScrollContentView에 넣어야 함!!
-    private func configureYourRecommandViewConstraint() {
-        yourRecommandView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            yourRecommandView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            yourRecommandView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            yourRecommandView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            yourRecommandView.heightAnchor.constraint(equalToConstant: 200)
-        ])
-    }
-    
     @objc
     private func touchedHeaderButton() {
         // 다음 what's new 화면으로 이동
@@ -100,26 +87,4 @@ extension HomeViewController: UIScrollViewDelegate {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = yourRecommandView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
-            return UICollectionViewCell()
-        }
-        
-        return cell
-    }
-    
-    // MARK : 헤더 설정하기
-    
-}
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    // 셀 사이즈 설정
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50)
-    }
-}
