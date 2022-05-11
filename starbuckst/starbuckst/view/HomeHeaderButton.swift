@@ -19,6 +19,7 @@ class HomeHeaderButton: UIButton {
     private let headerLabel: UILabel = {
         var label = UILabel()
         label.text = "What's New"
+        label.font = UIFont.customFont(.santanaBlack)
         return label
     }()
     
