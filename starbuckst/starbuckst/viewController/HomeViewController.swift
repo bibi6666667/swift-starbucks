@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let contentView = HomeVerticalScrollContentView()
     
+    private let yourRecommandView = UICollectionView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = "Home"
@@ -84,4 +86,21 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrolled")
     }
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = yourRecommandView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        
+        return cell
+    }
+    
+    
 }
