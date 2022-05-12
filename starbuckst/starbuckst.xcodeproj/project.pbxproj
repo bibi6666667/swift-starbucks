@@ -10,7 +10,6 @@
 		008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DC282B875100F2E826 /* UIColorExtension.swift */; };
 		008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */; };
 		008CA9E4282B8E3700F2E826 /* Santana-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */; };
-		008CA9EA282B9A3D00F2E826 /* sampleMenu.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 008CA9E9282B9A3D00F2E826 /* sampleMenu.jpeg */; };
 		008CA9EE282CA8A100F2E826 /* HomeYourRecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9ED282CA8A100F2E826 /* HomeYourRecommandViewController.swift */; };
 		008CA9F2282CB47600F2E826 /* HomeYourRecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9F1282CB47600F2E826 /* HomeYourRecommandView.swift */; };
 		0095729F282A05D20018DC61 /* HomeYourRecommandViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */; };
@@ -31,7 +30,6 @@
 		008CA9DC282B875100F2E826 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Santana-Black.ttf"; sourceTree = "<group>"; };
-		008CA9E9282B9A3D00F2E826 /* sampleMenu.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sampleMenu.jpeg; sourceTree = "<group>"; };
 		008CA9ED282CA8A100F2E826 /* HomeYourRecommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandViewController.swift; sourceTree = "<group>"; };
 		008CA9F1282CB47600F2E826 /* HomeYourRecommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandView.swift; sourceTree = "<group>"; };
 		0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandViewCell.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				009572A6282A0C150018DC61 /* viewController */,
 				008CA9DB282B873500F2E826 /* extension */,
 				008CA9E0282B8B4700F2E826 /* font */,
-				008CA9E9282B9A3D00F2E826 /* sampleMenu.jpeg */,
 				00B99ED828290A0500A4B2B6 /* Main.storyboard */,
 				00B99EDB28290A0700A4B2B6 /* Assets.xcassets */,
 				00B99EDD28290A0700A4B2B6 /* LaunchScreen.storyboard */,
@@ -205,7 +202,6 @@
 				008CA9E4282B8E3700F2E826 /* Santana-Black.ttf in Resources */,
 				00B99EDC28290A0700A4B2B6 /* Assets.xcassets in Resources */,
 				00B99EDA28290A0500A4B2B6 /* Main.storyboard in Resources */,
-				008CA9EA282B9A3D00F2E826 /* sampleMenu.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

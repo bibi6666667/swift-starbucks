@@ -15,7 +15,9 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     
     private let menuImageView: UIImageView = {
         var imageView = UIImageView()
+        imageView.image = UIImage(named: "sampleMenu")
         imageView.backgroundColor = UIColor.customColor(.primaryGreen)
+        imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 150 / 2
         return imageView
     }()
