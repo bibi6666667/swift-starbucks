@@ -11,22 +11,24 @@ class HomeViewController: UIViewController {
     static let identifier = "HomeViewController"
     
     private let headerButton: UIButton = HomeHeaderButton()
-    
     private let scrollView = UIScrollView()
     private let contentView = HomeVerticalScrollContentView()
     
-    
+    private let yourRecommandView = HomeYourRecommandView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = "Home"
         
         self.scrollView.delegate = self
+        self.yourRecommandView.dataSource = self
+        self.yourRecommandView.register(HomeYourRecommandViewCell.self, forCellWithReuseIdentifier: HomeYourRecommandViewCell.identifier)
         
         setViews()
         setViewConstraints()
+        
+        
     }
-    //MARK: child view controller 관계 설정하고 HomeVC에 추가하기
     
     private func setViews() {
         self.view.addSubview(headerButton)
@@ -34,12 +36,16 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        self.view.addSubview(yourRecommandView)
     }
+    
+//    private func setChild() { }
     
     private func setViewConstraints() {
         configureHeaderButtonConstraint()
         configureVerticalScrollViewConstraint()
         configureContentViewConstraint()
+        configureYourRecommandViewConstraint()
     }
     
     private func configureHeaderButtonConstraint() {
@@ -65,14 +71,24 @@ class HomeViewController: UIViewController {
     private func configureContentViewConstraint() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
         ])
-        // vertical scroll view
+        // vertical scroll
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
+    }
+    
+    private func configureYourRecommandViewConstraint() {
+        yourRecommandView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            yourRecommandView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            yourRecommandView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            yourRecommandView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            yourRecommandView.heightAnchor.constraint(equalToConstant: 100)
+        ])
     }
     
     @objc
@@ -87,4 +103,25 @@ extension HomeViewController: UIScrollViewDelegate {
     }
 }
 
+extension HomeViewController: UICollectionViewDataSource { // DataSources
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.backgroundColor = .red
+        return cell
+    }
+    
+}
 
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    // 셀 사이즈 설정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 50, height: 50)
+    }
+}

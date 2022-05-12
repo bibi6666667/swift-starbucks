@@ -13,7 +13,8 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     
     private let menuImageView: UIImageView = {
         var imageView = UIImageView()
-        imageView.image = UIImage(named: "sampleMenu")
+        imageView.backgroundColor = .red
+        //imageView.image = UIImage(named: "sampleMenu")
         return imageView
     }()
     
@@ -48,14 +49,19 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     private func configureMenuImageViewConstraint() {
         menuImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            
+            menuImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            menuImageView.widthAnchor.constraint(equalToConstant: 30),
+            menuImageView.heightAnchor.constraint(equalToConstant: 30),
+            menuImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
     
     private func configureMenuNameLabelConstraint() {
         menuNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        
+            menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor, constant: 10),
+            menuNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            menuNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }
