@@ -11,16 +11,19 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     
     static let identifier = "HomeYourRecommandViewCell"
     
+    private let menuImageViewSize: CGFloat = 150
+    
     private let menuImageView: UIImageView = {
         var imageView = UIImageView()
-        imageView.backgroundColor = .red
-        //imageView.image = UIImage(named: "sampleMenu")
+        imageView.backgroundColor = UIColor.customColor(.primaryGreen)
+        imageView.layer.cornerRadius = 150 / 2
         return imageView
     }()
     
     private let menuNameLabel: UILabel = {
         var label = UILabel()
-        label.text = "샘플메뉴"
+        label.text = "Sample Menu"
+        label.font = UIFont.customFont(.santanaBlack)
         return label
     }()
     
@@ -50,8 +53,8 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
         menuImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             menuImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            menuImageView.widthAnchor.constraint(equalToConstant: 30),
-            menuImageView.heightAnchor.constraint(equalToConstant: 30),
+            menuImageView.widthAnchor.constraint(equalToConstant: menuImageViewSize),
+            menuImageView.heightAnchor.constraint(equalToConstant: menuImageViewSize),
             menuImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
@@ -59,7 +62,7 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     private func configureMenuNameLabelConstraint() {
         menuNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor, constant: 10),
+            menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor, constant: 5),
             menuNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             menuNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])

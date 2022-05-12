@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
         
         self.scrollView.delegate = self
         self.yourRecommandView.dataSource = self
+        self.yourRecommandView.delegate = self
         self.yourRecommandView.register(HomeYourRecommandViewCell.self, forCellWithReuseIdentifier: HomeYourRecommandViewCell.identifier)
         
         setViews()
@@ -87,7 +88,7 @@ class HomeViewController: UIViewController {
             yourRecommandView.topAnchor.constraint(equalTo: contentView.topAnchor),
             yourRecommandView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             yourRecommandView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            yourRecommandView.heightAnchor.constraint(equalToConstant: 100)
+            yourRecommandView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
     
@@ -105,23 +106,24 @@ extension HomeViewController: UIScrollViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource { // DataSources
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
             return UICollectionViewCell()
         }
-        cell.backgroundColor = .red
         return cell
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    // 셀 사이즈 설정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50)
+        return CGSize(width: 200, height: 200)
     }
 }
