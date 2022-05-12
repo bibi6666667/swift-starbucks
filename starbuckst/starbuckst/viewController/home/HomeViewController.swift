@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let contentView = HomeVerticalScrollContentView()
     
+    private let yourRecommandHeader = HomeYourRecommandHeader()
     private let yourRecommandView = HomeYourRecommandView()
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class HomeViewController: UIViewController {
         self.yourRecommandView.dataSource = self
         self.yourRecommandView.delegate = self
         self.yourRecommandView.register(HomeYourRecommandViewCell.self, forCellWithReuseIdentifier: HomeYourRecommandViewCell.identifier)
+        self.yourRecommandView.register(HomeYourRecommandHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeYourRecommandHeader.identifier)
         
         setViews()
         setViewConstraints()
@@ -37,6 +39,8 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        
+        self.view.addSubview(yourRecommandHeader)
         self.view.addSubview(yourRecommandView)
     }
     
@@ -46,6 +50,7 @@ class HomeViewController: UIViewController {
         configureHeaderButtonConstraint()
         configureVerticalScrollViewConstraint()
         configureContentViewConstraint()
+        configureYourRecommandHeaderConstraint()
         configureYourRecommandViewConstraint()
     }
     
@@ -82,10 +87,20 @@ class HomeViewController: UIViewController {
         
     }
     
+    private func configureYourRecommandHeaderConstraint() {
+        yourRecommandHeader.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            yourRecommandHeader.topAnchor.constraint(equalTo: contentView.topAnchor),
+            yourRecommandHeader.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            yourRecommandHeader.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            yourRecommandHeader.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
     private func configureYourRecommandViewConstraint() {
         yourRecommandView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            yourRecommandView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            yourRecommandView.topAnchor.constraint(equalTo: yourRecommandHeader.bottomAnchor),
             yourRecommandView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             yourRecommandView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             yourRecommandView.heightAnchor.constraint(equalToConstant: 200)
@@ -104,7 +119,7 @@ extension HomeViewController: UIScrollViewDelegate {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource { // DataSources
+extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -119,6 +134,10 @@ extension HomeViewController: UICollectionViewDataSource { // DataSources
             return UICollectionViewCell()
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { // 셀 아이템 선택 시
+        
     }
 }
 
