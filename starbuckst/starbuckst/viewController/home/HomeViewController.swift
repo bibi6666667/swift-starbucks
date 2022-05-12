@@ -25,7 +25,6 @@ class HomeViewController: UIViewController {
         self.yourRecommandView.dataSource = self
         self.yourRecommandView.delegate = self
         self.yourRecommandView.register(HomeYourRecommandViewCell.self, forCellWithReuseIdentifier: HomeYourRecommandViewCell.identifier)
-        self.yourRecommandView.register(HomeYourRecommandHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeYourRecommandHeader.identifier)
         
         setViews()
         setViewConstraints()
@@ -39,9 +38,10 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        scrollView.backgroundColor = UIColor.customColor(.white)
         
-        self.view.addSubview(yourRecommandHeader)
-        self.view.addSubview(yourRecommandView)
+        contentView.addSubview(yourRecommandHeader)
+        contentView.addSubview(yourRecommandView)
     }
     
 //    private func setChild() { }

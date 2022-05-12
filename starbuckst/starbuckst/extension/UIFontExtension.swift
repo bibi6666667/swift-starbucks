@@ -8,7 +8,9 @@
 import UIKit
 
 enum CustomFont {
-    case santanaBlack
+    case santanaBlackSmall
+    case santanaBlackMedium
+    case santanaBlackLarge
 }
 
 extension UIFont {
@@ -16,9 +18,12 @@ extension UIFont {
     static func customFont(_ name: CustomFont) -> UIFont {
         
         switch name {
-        case .santanaBlack: // set font and size you want
+        case .santanaBlackSmall:
+            return UIFont(name: "Santana-Black", size: 10) ?? UIFont()
+        case .santanaBlackMedium: // set font and size you want
             return UIFont(name: "Santana-Black", size: 20) ?? UIFont()
-        
+        case .santanaBlackLarge:
+            return UIFont(name: "Santana-Black", size: 30) ?? UIFont()
         }
     }
     

@@ -25,7 +25,7 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     private let menuNameLabel: UILabel = {
         var label = UILabel()
         label.text = "Sample Menu"
-        label.font = UIFont.customFont(.santanaBlack)
+        label.font = UIFont.customFont(.santanaBlackSmall)
         return label
     }()
     
@@ -54,7 +54,7 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     private func configureMenuImageViewConstraint() {
         menuImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            menuImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            menuImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             menuImageView.widthAnchor.constraint(equalToConstant: menuImageViewSize),
             menuImageView.heightAnchor.constraint(equalToConstant: menuImageViewSize),
             menuImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
@@ -64,7 +64,7 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     private func configureMenuNameLabelConstraint() {
         menuNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor, constant: 5),
+            menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor),
             menuNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             menuNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])

@@ -7,14 +7,14 @@
 
 import UIKit
 
-class HomeYourRecommandHeader: UICollectionReusableView {
+class HomeYourRecommandHeader: UIView {
     
     static let identifier = "HomeYourRecommandHeader"
     
     private let recommandLabel: UILabel = {
         var label = UILabel()
         label.text = "bibi 님을 위한 추천 메뉴"
-        label.backgroundColor = .yellow
+        label.font = UIFont.customFont(.santanaBlackLarge)
         return label
     }()
     
@@ -43,7 +43,7 @@ class HomeYourRecommandHeader: UICollectionReusableView {
         NSLayoutConstraint.activate([
             recommandLabel.topAnchor.constraint(equalTo: self.topAnchor),
             recommandLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            recommandLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            recommandLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             recommandLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
