@@ -40,8 +40,8 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(contentView)
         scrollView.backgroundColor = UIColor.customColor(.white)
         
-        contentView.addSubview(yourRecommandHeader)
-        contentView.addSubview(yourRecommandView)
+        self.view.addSubview(yourRecommandHeader)
+        self.view.addSubview(yourRecommandView)
     }
     
 //    private func setChild() { }
@@ -81,9 +81,9 @@ class HomeViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            // vertical scroll
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-        // vertical scroll
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
     }
     
