@@ -11,7 +11,8 @@ class HomeEventsViewCell: UICollectionViewCell {
     
     static let identifier = "HomeEventsViewCell"
     
-    private let menuImageViewSize: CGFloat = 150
+    private let menuImageWidth: CGFloat = 150
+    private let menuImageHeight: CGFloat = 100
     
     private let eventImageView: UIImageView = {
         var imageView = UIImageView()
@@ -22,7 +23,7 @@ class HomeEventsViewCell: UICollectionViewCell {
     private let eventTitleLabel: UILabel = {
         var label = UILabel()
         label.text = "Event Title"
-        label.font = UIFont.customFont(.santanaBlackSmall)
+        label.font = UIFont.customFont(.santanaBlackMedium)
         return label
     }()
     
@@ -48,29 +49,40 @@ class HomeEventsViewCell: UICollectionViewCell {
     private func setUI() {
         self.addSubview(eventImageView)
         self.addSubview(eventTitleLabel)
+        self.addSubview(eventContentLabel)
     }
     
     private func setConstraint() {
-        configureMenuImageViewConstraint()
-        configureMenuNameLabelConstraint()
+        configureEventImageViewConstraint()
+        configureEventTitleLabelConstraint()
+        configureEventContentLabelConstraint()
     }
     
-    private func configureMenuImageViewConstraint() {
+    private func configureEventImageViewConstraint() {
         eventImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             eventImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            eventImageView.widthAnchor.constraint(equalToConstant: menuImageViewSize),
-            eventImageView.heightAnchor.constraint(equalToConstant: menuImageViewSize),
-            eventImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            eventContentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+//            eventContentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            eventImageView.widthAnchor.constraint(equalToConstant: menuImageWidth),
+            eventImageView.heightAnchor.constraint(equalToConstant: menuImageHeight),
         ])
     }
     
-    private func configureMenuNameLabelConstraint() {
+    private func configureEventTitleLabelConstraint() {
         eventTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             eventTitleLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor),
-            eventTitleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            eventTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            eventTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+        ])
+    }
+    
+    private func configureEventContentLabelConstraint() {
+        eventContentLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            eventContentLabel.topAnchor.constraint(equalTo: eventTitleLabel.bottomAnchor),
+            eventContentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            eventContentLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }
