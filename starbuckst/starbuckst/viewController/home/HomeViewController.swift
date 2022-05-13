@@ -48,8 +48,6 @@ class HomeViewController: UIViewController {
         self.view.addSubview(mainEventView)
     }
     
-    //    private func setChild() { }
-    
     private func setViewConstraints() {
         configureHeaderButtonConstraint()
         configureVerticalScrollViewConstraint()

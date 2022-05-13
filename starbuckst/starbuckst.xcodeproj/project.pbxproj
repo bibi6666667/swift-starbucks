@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0034431B282E06590087795B /* HomeEventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034431A282E06590087795B /* HomeEventsViewCell.swift */; };
+		0034431D282E0B890087795B /* HomeYourRecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034431C282E0B890087795B /* HomeYourRecommandViewController.swift */; };
+		0034431F282E0F530087795B /* Amodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034431E282E0F530087795B /* Amodel.swift */; };
 		008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DC282B875100F2E826 /* UIColorExtension.swift */; };
 		008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */; };
 		008CA9E4282B8E3700F2E826 /* Santana-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */; };
-		008CA9EE282CA8A100F2E826 /* HomeYourRecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9ED282CA8A100F2E826 /* HomeYourRecommandViewController.swift */; };
 		008CA9F2282CB47600F2E826 /* HomeYourRecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9F1282CB47600F2E826 /* HomeYourRecommandView.swift */; };
 		008CA9F7282CF7CD00F2E826 /* HomeYourRecommandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */; };
 		0095729F282A05D20018DC61 /* HomeYourRecommandViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */; };
@@ -28,10 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0034431A282E06590087795B /* HomeEventsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventsViewCell.swift; sourceTree = "<group>"; };
+		0034431C282E0B890087795B /* HomeYourRecommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandViewController.swift; sourceTree = "<group>"; };
+		0034431E282E0F530087795B /* Amodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amodel.swift; sourceTree = "<group>"; };
 		008CA9DC282B875100F2E826 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Santana-Black.ttf"; sourceTree = "<group>"; };
-		008CA9ED282CA8A100F2E826 /* HomeYourRecommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandViewController.swift; sourceTree = "<group>"; };
 		008CA9F1282CB47600F2E826 /* HomeYourRecommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandView.swift; sourceTree = "<group>"; };
 		008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandHeader.swift; sourceTree = "<group>"; };
 		0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandViewCell.swift; sourceTree = "<group>"; };
@@ -82,7 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				00B99EE62829562D00A4B2B6 /* HomeViewController.swift */,
-				008CA9ED282CA8A100F2E826 /* HomeYourRecommandViewController.swift */,
+				0034431C282E0B890087795B /* HomeYourRecommandViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -95,6 +99,7 @@
 				0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */,
 				008CA9F1282CB47600F2E826 /* HomeYourRecommandView.swift */,
 				008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */,
+				0034431A282E06590087795B /* HomeEventsViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				00B99EDB28290A0700A4B2B6 /* Assets.xcassets */,
 				00B99EDD28290A0700A4B2B6 /* LaunchScreen.storyboard */,
 				00B99EE028290A0700A4B2B6 /* Info.plist */,
+				0034431E282E0F530087795B /* Amodel.swift */,
 			);
 			path = starbuckst;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0034431B282E06590087795B /* HomeEventsViewCell.swift in Sources */,
 				00B99ED728290A0500A4B2B6 /* MainTabBarViewController.swift in Sources */,
 				008CA9F7282CF7CD00F2E826 /* HomeYourRecommandHeader.swift in Sources */,
 				00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */,
@@ -222,9 +229,10 @@
 				0095729F282A05D20018DC61 /* HomeYourRecommandViewCell.swift in Sources */,
 				00B99ED328290A0500A4B2B6 /* AppDelegate.swift in Sources */,
 				008CA9F2282CB47600F2E826 /* HomeYourRecommandView.swift in Sources */,
+				0034431D282E0B890087795B /* HomeYourRecommandViewController.swift in Sources */,
+				0034431F282E0F530087795B /* Amodel.swift in Sources */,
 				00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */,
 				00B99EEB2829563E00A4B2B6 /* FavoriteViewController.swift in Sources */,
-				008CA9EE282CA8A100F2E826 /* HomeYourRecommandViewController.swift in Sources */,
 				008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */,
 				009572AA282A37A40018DC61 /* HomeVerticalScrollContentView.swift in Sources */,
 				00B99EE72829562D00A4B2B6 /* HomeViewController.swift in Sources */,
