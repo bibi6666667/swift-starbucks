@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     private let yourRecommandVC = HomeYourRecommandViewController()
     private let mainEventView = UIImageView()
     private let eventsVC = HomeEventsViewController()
+    private let thisTimeRecommandVC = HomeThisTimeRecommandViewController()
     
     private let viewSpace: CGFloat = 10
     
@@ -38,6 +39,10 @@ class HomeViewController: UIViewController {
         self.view.addSubview(eventsVC.view)
         self.addChild(eventsVC)
         eventsVC.didMove(toParent: self)
+        
+        self.view.addSubview(thisTimeRecommandVC.view)
+        self.addChild(thisTimeRecommandVC)
+        thisTimeRecommandVC.didMove(toParent: self)
     }
     
     private func setViews() {
@@ -53,6 +58,8 @@ class HomeViewController: UIViewController {
         self.view.addSubview(mainEventView)
         
         self.view.addSubview(eventsVC.view)
+        
+        self.view.addSubview(thisTimeRecommandVC.view)
     }
     
     private func setViewConstraints() {
@@ -62,6 +69,7 @@ class HomeViewController: UIViewController {
         configureYourRecommandVCViewConstraint()
         configureMainEventViewConstraint()
         configureEventsVCViewConstraint()
+        configureThisTimeRecommandVCViewConstraint()
     }
     
     private func configureHeaderButtonConstraint() {
@@ -103,7 +111,7 @@ class HomeViewController: UIViewController {
             yourRecommandVC.view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: viewSpace),
             yourRecommandVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             yourRecommandVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            yourRecommandVC.view.heightAnchor.constraint(equalToConstant: 250)
+            yourRecommandVC.view.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
@@ -125,8 +133,19 @@ class HomeViewController: UIViewController {
             eventsVC.view.topAnchor.constraint(equalTo: mainEventView.bottomAnchor, constant: viewSpace),
             eventsVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             eventsVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            eventsVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            // eventsVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             eventsVC.view.heightAnchor.constraint(equalToConstant: 300)
+        ])
+    }
+    
+    private func configureThisTimeRecommandVCViewConstraint() {
+        thisTimeRecommandVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            thisTimeRecommandVC.view.topAnchor.constraint(equalTo: eventsVC.view.bottomAnchor, constant: viewSpace),
+            thisTimeRecommandVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            thisTimeRecommandVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            thisTimeRecommandVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            thisTimeRecommandVC.view.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     

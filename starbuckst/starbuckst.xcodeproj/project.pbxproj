@@ -12,6 +12,9 @@
 		0034431F282E0F530087795B /* Amodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034431E282E0F530087795B /* Amodel.swift */; };
 		00344323282E6EFA0087795B /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00344322282E6EFA0087795B /* Events.swift */; };
 		00344325282E6F7B0087795B /* HomeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00344324282E6F7B0087795B /* HomeEventsViewController.swift */; };
+		00344327282EA29A0087795B /* HomeThisTimeRecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00344326282EA29A0087795B /* HomeThisTimeRecommandViewController.swift */; };
+		00344329282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00344328282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift */; };
+		0034432B282EA3000087795B /* HomeThisTimeRecommandViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034432A282EA3000087795B /* HomeThisTimeRecommandViewCell.swift */; };
 		008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DC282B875100F2E826 /* UIColorExtension.swift */; };
 		008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */; };
 		008CA9E4282B8E3700F2E826 /* Santana-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */; };
@@ -36,6 +39,9 @@
 		0034431E282E0F530087795B /* Amodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amodel.swift; sourceTree = "<group>"; };
 		00344322282E6EFA0087795B /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		00344324282E6F7B0087795B /* HomeEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventsViewController.swift; sourceTree = "<group>"; };
+		00344326282EA29A0087795B /* HomeThisTimeRecommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeThisTimeRecommandViewController.swift; sourceTree = "<group>"; };
+		00344328282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeThisTimeRecommandHeader.swift; sourceTree = "<group>"; };
+		0034432A282EA3000087795B /* HomeThisTimeRecommandViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeThisTimeRecommandViewCell.swift; sourceTree = "<group>"; };
 		008CA9DC282B875100F2E826 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Santana-Black.ttf"; sourceTree = "<group>"; };
@@ -75,6 +81,8 @@
 				0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */,
 				008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */,
 				0034431A282E06590087795B /* HomeEventsViewCell.swift */,
+				00344328282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift */,
+				0034432A282EA3000087795B /* HomeThisTimeRecommandViewCell.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -110,6 +118,7 @@
 				00B99EE62829562D00A4B2B6 /* HomeViewController.swift */,
 				0034431C282E0B890087795B /* HomeYourRecommandViewController.swift */,
 				00344324282E6F7B0087795B /* HomeEventsViewController.swift */,
+				00344326282EA29A0087795B /* HomeThisTimeRecommandViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -243,6 +252,7 @@
 				0034431B282E06590087795B /* HomeEventsViewCell.swift in Sources */,
 				00B99ED728290A0500A4B2B6 /* MainTabBarViewController.swift in Sources */,
 				008CA9F7282CF7CD00F2E826 /* HomeYourRecommandHeader.swift in Sources */,
+				0034432B282EA3000087795B /* HomeThisTimeRecommandViewCell.swift in Sources */,
 				00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */,
 				009572A5282A08200018DC61 /* HomeHeaderButton.swift in Sources */,
 				0095729F282A05D20018DC61 /* HomeYourRecommandViewCell.swift in Sources */,
@@ -251,11 +261,13 @@
 				0034431D282E0B890087795B /* HomeYourRecommandViewController.swift in Sources */,
 				0034431F282E0F530087795B /* Amodel.swift in Sources */,
 				00344325282E6F7B0087795B /* HomeEventsViewController.swift in Sources */,
+				00344327282EA29A0087795B /* HomeThisTimeRecommandViewController.swift in Sources */,
 				00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */,
 				00B99EEB2829563E00A4B2B6 /* FavoriteViewController.swift in Sources */,
 				008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */,
 				00344323282E6EFA0087795B /* Events.swift in Sources */,
 				00B99EE72829562D00A4B2B6 /* HomeViewController.swift in Sources */,
+				00344329282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift in Sources */,
 				008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
