@@ -12,24 +12,37 @@ class HomeViewController: UIViewController {
     
     private let headerButton: UIButton = HomeHeaderButton()
     private let scrollView = UIScrollView()
-    private let contentView = HomeVerticalScrollContentView()
+    private let contentView = UIView()
+    private let yourRecommandVC = HomeYourRecommandViewController()
+    private let mainEventView = UIImageView()
+    private let eventsVC = HomeEventsViewController()
+    private let thisTimeRecommandVC = HomeThisTimeRecommandViewController()
     
-    private let yourRecommandHeader = HomeYourRecommandHeader()
-    private let yourRecommandView = HomeYourRecommandView()
+    private let viewSpace: CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = "Home"
         
         self.scrollView.delegate = self
-        self.yourRecommandView.dataSource = self
-        self.yourRecommandView.delegate = self
-        self.yourRecommandView.register(HomeYourRecommandViewCell.self, forCellWithReuseIdentifier: HomeYourRecommandViewCell.identifier)
         
+        setChild()
         setViews()
         setViewConstraints()
+    }
+    
+    private func setChild() {
+        self.view.addSubview(yourRecommandVC.view)
+        self.addChild(yourRecommandVC)
+        yourRecommandVC.didMove(toParent: self)
         
+        self.view.addSubview(eventsVC.view)
+        self.addChild(eventsVC)
+        eventsVC.didMove(toParent: self)
         
+        self.view.addSubview(thisTimeRecommandVC.view)
+        self.addChild(thisTimeRecommandVC)
+        thisTimeRecommandVC.didMove(toParent: self)
     }
     
     private func setViews() {
@@ -40,18 +53,23 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(contentView)
         scrollView.backgroundColor = UIColor.customColor(.white)
         
-        self.view.addSubview(yourRecommandHeader)
-        self.view.addSubview(yourRecommandView)
+        self.view.addSubview(yourRecommandVC.view)
+        
+        self.view.addSubview(mainEventView)
+        
+        self.view.addSubview(eventsVC.view)
+        
+        self.view.addSubview(thisTimeRecommandVC.view)
     }
-    
-//    private func setChild() { }
     
     private func setViewConstraints() {
         configureHeaderButtonConstraint()
         configureVerticalScrollViewConstraint()
         configureContentViewConstraint()
-        configureYourRecommandHeaderConstraint()
-        configureYourRecommandViewConstraint()
+        configureYourRecommandVCViewConstraint()
+        configureMainEventViewConstraint()
+        configureEventsVCViewConstraint()
+        configureThisTimeRecommandVCViewConstraint()
     }
     
     private func configureHeaderButtonConstraint() {
@@ -87,23 +105,47 @@ class HomeViewController: UIViewController {
         
     }
     
-    private func configureYourRecommandHeaderConstraint() {
-        yourRecommandHeader.translatesAutoresizingMaskIntoConstraints = false
+    private func configureYourRecommandVCViewConstraint() {
+        yourRecommandVC.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            yourRecommandHeader.topAnchor.constraint(equalTo: contentView.topAnchor),
-            yourRecommandHeader.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            yourRecommandHeader.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            yourRecommandHeader.heightAnchor.constraint(equalToConstant: 50)
+            yourRecommandVC.view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: viewSpace),
+            yourRecommandVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            yourRecommandVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            yourRecommandVC.view.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
-    private func configureYourRecommandViewConstraint() {
-        yourRecommandView.translatesAutoresizingMaskIntoConstraints = false
+    private func configureMainEventViewConstraint() {
+        mainEventView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            yourRecommandView.topAnchor.constraint(equalTo: yourRecommandHeader.bottomAnchor),
-            yourRecommandView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            yourRecommandView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            yourRecommandView.heightAnchor.constraint(equalToConstant: 200)
+            mainEventView.topAnchor.constraint(equalTo: yourRecommandVC.view.bottomAnchor, constant: viewSpace),
+            mainEventView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mainEventView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            //mainEventView.bottomAnchor.constraint(equalTo: eventsVC.view.topAnchor)
+            mainEventView.heightAnchor.constraint(equalToConstant: 800)
+        ])
+        mainEventView.image = UIImage(named: "sampleMenu")
+    }
+    
+    private func configureEventsVCViewConstraint() {
+        eventsVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            eventsVC.view.topAnchor.constraint(equalTo: mainEventView.bottomAnchor, constant: viewSpace),
+            eventsVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            eventsVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            // eventsVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            eventsVC.view.heightAnchor.constraint(equalToConstant: 300)
+        ])
+    }
+    
+    private func configureThisTimeRecommandVCViewConstraint() {
+        thisTimeRecommandVC.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            thisTimeRecommandVC.view.topAnchor.constraint(equalTo: eventsVC.view.bottomAnchor, constant: viewSpace),
+            thisTimeRecommandVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            thisTimeRecommandVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            thisTimeRecommandVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            thisTimeRecommandVC.view.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
@@ -116,33 +158,5 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrolled")
-    }
-}
-
-extension HomeViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
-            return UICollectionViewCell()
-        }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { // 셀 아이템 선택 시
-        
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 200)
     }
 }

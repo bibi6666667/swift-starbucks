@@ -9,30 +9,46 @@ import UIKit
 
 class HomeYourRecommandViewController: UIViewController {
 
-    private let yourRecommandView = HomeYourRecommandView()
+    private let yourRecommandHeader = HomeYourRecommandHeader()
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.view.addSubview(yourRecommandView)
-    }
+    private let yourRecommandView = HorizontalCollectionView()
+    private let yourRecommandCellSize = CGSize(width: 200, height: 200)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.yourRecommandView.delegate = self
         self.yourRecommandView.dataSource = self
         self.yourRecommandView.register(HomeYourRecommandViewCell.self, forCellWithReuseIdentifier: HomeYourRecommandViewCell.identifier)
         
-        // setViews()
+        setViews()
         setConstraints()
     }
     
+    private func setViews() {
+        self.view.addSubview(yourRecommandHeader)
+        self.view.addSubview(yourRecommandView)
+    }
+    
     private func setConstraints() {
+        configureYourRecommandHeaderConstraint()
         configureYourRecommandViewConstraint()
+    }
+    
+    private func configureYourRecommandHeaderConstraint() {
+        yourRecommandHeader.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            yourRecommandHeader.topAnchor.constraint(equalTo: self.view.topAnchor),
+            yourRecommandHeader.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            yourRecommandHeader.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            yourRecommandHeader.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     private func configureYourRecommandViewConstraint() {
         yourRecommandView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            yourRecommandView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            yourRecommandView.topAnchor.constraint(equalTo: yourRecommandHeader.bottomAnchor),
             yourRecommandView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             yourRecommandView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             yourRecommandView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
@@ -40,26 +56,30 @@ class HomeYourRecommandViewController: UIViewController {
     }
 }
 
-
-extension HomeYourRecommandViewController: UICollectionViewDataSource { // DataSources
+extension HomeYourRecommandViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
             return UICollectionViewCell()
         }
-        cell.backgroundColor = .red
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { // 셀 아이템 선택 시
+        
+    }
 }
 
 extension HomeYourRecommandViewController: UICollectionViewDelegateFlowLayout {
-    // 셀 사이즈 설정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50)
+        return yourRecommandCellSize
     }
 }
