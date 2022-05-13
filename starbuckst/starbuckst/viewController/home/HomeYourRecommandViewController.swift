@@ -12,6 +12,7 @@ class HomeYourRecommandViewController: UIViewController {
     private let yourRecommandHeader = HomeYourRecommandHeader()
     
     private let yourRecommandView = HorizontalCollectionView()
+    private let yourRecommandCellSize = CGSize(width: 200, height: 200)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,6 @@ extension HomeYourRecommandViewController: UICollectionViewDataSource {
 
 extension HomeYourRecommandViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 200)
+        return yourRecommandCellSize
     }
 }

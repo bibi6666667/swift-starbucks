@@ -13,21 +13,11 @@ class HomeViewController: UIViewController {
     private let headerButton: UIButton = HomeHeaderButton()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    
-    // private let yourRecommandHeader = HomeYourRecommandHeader()
-    // private let yourRecommandView = HorizontalCollectionView()
     private let yourRecommandVC = HomeYourRecommandViewController()
-    
     private let mainEventView = UIImageView()
+    private let eventsVC = HomeEventsViewController()
     
-    private let seeAllButton: UIButton = {
-        var button = UIButton()
-        button.setTitle("See all", for: .normal)
-        button.setTitleColor(UIColor.customColor(.primaryGreen), for: .normal)
-        return button
-    }()
-    
-    private let eventsView = HorizontalCollectionView()
+    private let viewSpace: CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +34,10 @@ class HomeViewController: UIViewController {
         self.view.addSubview(yourRecommandVC.view)
         self.addChild(yourRecommandVC)
         yourRecommandVC.didMove(toParent: self)
+        
+        self.view.addSubview(eventsVC.view)
+        self.addChild(eventsVC)
+        eventsVC.didMove(toParent: self)
     }
     
     private func setViews() {
@@ -54,22 +48,20 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(contentView)
         scrollView.backgroundColor = UIColor.customColor(.white)
         
-        // self.view.addSubview(yourRecommandHeader)
         self.view.addSubview(yourRecommandVC.view)
         
         self.view.addSubview(mainEventView)
         
-        self.view.addSubview(eventsView)
+        self.view.addSubview(eventsVC.view)
     }
     
     private func setViewConstraints() {
         configureHeaderButtonConstraint()
         configureVerticalScrollViewConstraint()
         configureContentViewConstraint()
-        //configureYourRecommandHeaderConstraint()
         configureYourRecommandVCViewConstraint()
         configureMainEventViewConstraint()
-        configureEventsViewConstraint()
+        configureEventsVCViewConstraint()
     }
     
     private func configureHeaderButtonConstraint() {
@@ -105,20 +97,10 @@ class HomeViewController: UIViewController {
         
     }
     
-//    private func configureYourRecommandHeaderConstraint() {
-//        yourRecommandHeader.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            yourRecommandHeader.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            yourRecommandHeader.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            yourRecommandHeader.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            yourRecommandHeader.heightAnchor.constraint(equalToConstant: 50)
-//        ])
-//    }
-    
     private func configureYourRecommandVCViewConstraint() {
         yourRecommandVC.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            yourRecommandVC.view.topAnchor.constraint(equalTo: contentView.topAnchor),
+            yourRecommandVC.view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: viewSpace),
             yourRecommandVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             yourRecommandVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             yourRecommandVC.view.heightAnchor.constraint(equalToConstant: 250)
@@ -128,33 +110,25 @@ class HomeViewController: UIViewController {
     private func configureMainEventViewConstraint() {
         mainEventView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainEventView.topAnchor.constraint(equalTo: yourRecommandVC.view.bottomAnchor),
+            mainEventView.topAnchor.constraint(equalTo: yourRecommandVC.view.bottomAnchor, constant: viewSpace),
             mainEventView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             mainEventView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            mainEventView.bottomAnchor.constraint(equalTo: eventsView.topAnchor)
+            //mainEventView.bottomAnchor.constraint(equalTo: eventsVC.view.topAnchor)
+            mainEventView.heightAnchor.constraint(equalToConstant: 800)
         ])
         mainEventView.image = UIImage(named: "sampleMenu")
     }
     
-    private func configureSeeAllButtonConstraint() {
-        seeAllButton.translatesAutoresizingMaskIntoConstraints = false
+    private func configureEventsVCViewConstraint() {
+        eventsVC.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            seeAllButton.topAnchor.constraint(equalTo: mainEventView.bottomAnchor, constant: 10),
-            seeAllButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            eventsVC.view.topAnchor.constraint(equalTo: mainEventView.bottomAnchor, constant: viewSpace),
+            eventsVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            eventsVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            eventsVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            eventsVC.view.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
-    
-    private func configureEventsViewConstraint() {
-        eventsView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            eventsView.topAnchor.constraint(equalTo: mainEventView.bottomAnchor),
-            eventsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            eventsView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            eventsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-    }
-    
-    
     
     @objc
     private func touchedHeaderButton() {
@@ -167,5 +141,3 @@ extension HomeViewController: UIScrollViewDelegate {
         print("scrolled")
     }
 }
-
-

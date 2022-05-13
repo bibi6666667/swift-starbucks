@@ -11,8 +11,8 @@ class HomeEventsViewCell: UICollectionViewCell {
     
     static let identifier = "HomeEventsViewCell"
     
-    private let menuImageWidth: CGFloat = 150
-    private let menuImageHeight: CGFloat = 100
+    // private let eventImageWidth: CGFloat = 150
+    private let eventImageHeight: CGFloat = 180
     
     private let eventImageView: UIImageView = {
         var imageView = UIImageView()
@@ -61,11 +61,10 @@ class HomeEventsViewCell: UICollectionViewCell {
     private func configureEventImageViewConstraint() {
         eventImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            eventImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            eventContentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            eventContentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            eventImageView.widthAnchor.constraint(equalToConstant: menuImageWidth),
-            eventImageView.heightAnchor.constraint(equalToConstant: menuImageHeight),
+            eventImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            eventImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            eventImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            eventImageView.heightAnchor.constraint(equalToConstant: eventImageHeight),
         ])
     }
     

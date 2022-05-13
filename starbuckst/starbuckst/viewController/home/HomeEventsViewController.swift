@@ -7,82 +7,86 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+class HomeEventsViewController: UIViewController {
 
-class HomeEventsViewController: UICollectionViewController {
-
+    private let seeAllButton: UIButton = {
+        var button = UIButton()
+        button.setTitle("See all", for: .normal)
+        button.setTitleColor(UIColor.customColor(.primaryGreen), for: .normal)
+        return button
+    }()
+    
+    private let eventsView = HorizontalCollectionView()
+    private let eventsViewCellSize = CGSize(width: 250, height: 250)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        self.eventsView.delegate = self
+        self.eventsView.dataSource = self
+        self.eventsView.register(HomeEventsViewCell.self, forCellWithReuseIdentifier: HomeEventsViewCell.identifier)
+        
+        setViews()
+        setConstraints()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        // Configure the cell
+    private func setViews() {
+        self.view.addSubview(seeAllButton)
+        self.view.addSubview(eventsView)
+    }
     
+    private func setConstraints() {
+        configureSeeAllButtonConstraint()
+        configureEventsViewConstraint()
+    }
+    
+    private func configureSeeAllButtonConstraint() {
+        seeAllButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            seeAllButton.topAnchor.constraint(equalTo: self.view.topAnchor),
+            seeAllButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            seeAllButton.heightAnchor.constraint(equalToConstant: 30),
+            // seeAllButton.bottomAnchor.constraint(equalTo: eventsView.topAnchor)
+        ])
+    }
+    
+    private func configureEventsViewConstraint() {
+        eventsView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            eventsView.topAnchor.constraint(equalTo: seeAllButton.bottomAnchor),
+            eventsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            eventsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            // eventsView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            eventsView.heightAnchor.constraint(equalToConstant: 250)
+        ])
+    }
+
+}
+
+extension HomeEventsViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeEventsViewCell.identifier, for: indexPath) as? HomeEventsViewCell else {
+            return UICollectionViewCell()
+        }
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { // 셀 아이템 선택 시
+        
     }
-    */
+}
 
+extension HomeEventsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return eventsViewCellSize
+    }
 }
