@@ -17,6 +17,8 @@ class HomeViewController: UIViewController {
     private let yourRecommandHeader = HomeYourRecommandHeader()
     private let yourRecommandView = HomeYourRecommandView()
     
+    private let mainEventView = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = "Home"
@@ -42,9 +44,11 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(yourRecommandHeader)
         self.view.addSubview(yourRecommandView)
+        
+        self.view.addSubview(mainEventView)
     }
     
-//    private func setChild() { }
+    //    private func setChild() { }
     
     private func setViewConstraints() {
         configureHeaderButtonConstraint()
@@ -52,6 +56,7 @@ class HomeViewController: UIViewController {
         configureContentViewConstraint()
         configureYourRecommandHeaderConstraint()
         configureYourRecommandViewConstraint()
+        configureMainEventViewConstraint()
     }
     
     private func configureHeaderButtonConstraint() {
@@ -105,6 +110,17 @@ class HomeViewController: UIViewController {
             yourRecommandView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             yourRecommandView.heightAnchor.constraint(equalToConstant: 200)
         ])
+    }
+    
+    private func configureMainEventViewConstraint() {
+        mainEventView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            mainEventView.topAnchor.constraint(equalTo: yourRecommandView.bottomAnchor),
+            mainEventView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mainEventView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            mainEventView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        mainEventView.image = UIImage(named: "sampleMenu")
     }
     
     @objc
