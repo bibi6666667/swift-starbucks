@@ -21,7 +21,7 @@ class HomeThisTimeRecommandViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let menuNameLabel: UILabel = {
+    private let menuLabel: UILabel = {
         var label = UILabel()
         label.text = "1 Sample Menu"
         label.font = UIFont.customFont(.santanaBlackSmall)
@@ -42,12 +42,13 @@ class HomeThisTimeRecommandViewCell: UICollectionViewCell {
     
     private func setUI() {
         self.addSubview(menuImageView)
-        self.addSubview(menuNameLabel)
+        self.addSubview(menuLabel)
+        setMenuLabelAttribute()
     }
     
     private func setConstraint() {
         configureMenuImageViewConstraint()
-        configureMenuNameLabelConstraint()
+        configureMenuLabelConstraint()
     }
     
     private func configureMenuImageViewConstraint() {
@@ -60,12 +61,22 @@ class HomeThisTimeRecommandViewCell: UICollectionViewCell {
         ])
     }
     
-    private func configureMenuNameLabelConstraint() {
-        menuNameLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func configureMenuLabelConstraint() {
+        menuLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor),
-            menuNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            menuNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            menuLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor),
+            menuLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            menuLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+    }
+    
+    private func setMenuLabelAttribute() {
+        let fullText = menuLabel.text ?? ""
+        let fullTextNSString = fullText as NSString
+        let attributedString = NSMutableAttributedString(string: fullText)
+        let font = UIFont.customFont(.santanaBlackMedium)
+        attributedString.addAttribute(.font, value: font, range: fullTextNSString.range(of: "1"))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.customColor(.primaryGreen), range: fullTextNSString.range(of: "1"))
+        menuLabel.attributedText = attributedString
     }
 }
