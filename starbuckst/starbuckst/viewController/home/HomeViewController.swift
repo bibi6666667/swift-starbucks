@@ -10,6 +10,8 @@ import UIKit
 class HomeViewController: UIViewController {
     static let identifier = "HomeViewController"
     
+    private let networkManager = NetworkManager()
+    
     private let headerButton: UIButton = HomeHeaderButton()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -29,6 +31,8 @@ class HomeViewController: UIViewController {
         setChild()
         setViews()
         setViewConstraints()
+        
+        networkManager.getHomeData()
     }
     
     private func setChild() {

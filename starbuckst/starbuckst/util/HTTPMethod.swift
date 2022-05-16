@@ -13,7 +13,16 @@ enum HTTPMethod: String {
     case patch = "PATCH"
     case delete = "DELETE"
     
-    func getRawValue() -> String {
-        return self.rawValue
+    var description: String {
+        switch self {
+        case .get:
+            return "GET"
+        case .post:
+            return "POST"
+        case .patch:
+            return "PATCH"
+        case .delete:
+            return "DELETE"
+        }
     }
 }

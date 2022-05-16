@@ -9,14 +9,14 @@ import Foundation
 import os
 
 // HTTP 요청을 보내고, 그 결과를 받는 역할
-final class URLManager {
+final class HTTPManager {
 
     static func requestGET(url: String, complete: @escaping (Data) -> ()) {
       // complete @escaping  : 클로저가 바로 실행되지 않고, 함수가 종료될 때 해당 클로저가 실행됨
         guard let validURL = URL(string: url) else { return }
 
         var urlRequest = URLRequest(url: validURL) // URL에 보내는 URLRequest 생성
-        urlRequest.httpMethod = HTTPMethod.get.getRawValue()
+        urlRequest.httpMethod = HTTPMethod.get.description
 
         URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
                         // dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
@@ -39,7 +39,7 @@ final class URLManager {
         guard let validURL = URL(string: url) else { return }
 
         var urlRequest = URLRequest(url: validURL)
-        urlRequest.httpMethod = HTTPMethod.post.getRawValue()
+        urlRequest.httpMethod = HTTPMethod.post.description
         urlRequest.httpBody = encodingData // GET과 다르게 보낼 데이터를 httpBody에 넣어준다
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("\(encodingData.count)", forHTTPHeaderField: "Content-Length")
@@ -62,7 +62,7 @@ final class URLManager {
         guard let validURL = URL(string: url) else { return }
 
         var urlRequest = URLRequest(url: validURL)
-        urlRequest.httpMethod = HTTPMethod.patch.getRawValue()
+        urlRequest.httpMethod = HTTPMethod.patch.description
         urlRequest.httpBody = encodingData
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("\(encodingData.count)", forHTTPHeaderField: "Content-Length")
@@ -84,7 +84,7 @@ final class URLManager {
     static func requestDELETE(url: String, encodingData: Data, complete: @escaping (Data) -> ()) {
         guard let validURL = URL(string: url) else { return }
         var urlRequest = URLRequest(url: validURL)
-        urlRequest.httpMethod = HTTPMethod.delete.getRawValue()
+        urlRequest.httpMethod = HTTPMethod.delete.description
         urlRequest.httpBody = encodingData
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
