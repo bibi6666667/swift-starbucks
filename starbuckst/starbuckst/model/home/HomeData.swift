@@ -24,11 +24,11 @@ struct HomeData: Codable {
 
 // MARK: - MainEvent
 struct MainEvent: Codable {
-    let imgUPLOADPATH: String
+    let imageUploadPath: String
     let mobTHUM: String
 
     enum CodingKeys: String, CodingKey {
-        case imgUPLOADPATH = "img_UPLOAD_PATH"
+        case imageUploadPath = "img_UPLOAD_PATH"
         case mobTHUM = "mob_THUM"
     }
 }

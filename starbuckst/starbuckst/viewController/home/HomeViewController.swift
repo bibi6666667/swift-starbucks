@@ -10,7 +10,8 @@ import UIKit
 class HomeViewController: UIViewController {
     static let identifier = "HomeViewController"
     
-    private let networkManager = NetworkManager()
+    private let networkManager = NetworkManager.publicNetworkManager
+    private let imageCacheManager = ImageCacheManager.publicCacheManager
     
     private let headerButton: UIButton = HomeHeaderButton()
     private let scrollView = UIScrollView()
@@ -27,12 +28,52 @@ class HomeViewController: UIViewController {
         //self.title = "Home"
         
         self.scrollView.delegate = self
+        addNotifications()
+        
+        
         
         setChild()
         setViews()
         setViewConstraints()
         
         networkManager.getHomeData()
+//        guard let mainEventImgURL = URL(string: homeData.mainEvent.imageUploadPath) else {
+//            print("이미지url없어요")
+//            return
+//        }
+//        print("이미지URL : \(mainEventImgURL)")
+//        var mainEventImageItem = ImageItem(url: mainEventImgURL)
+//
+//        imageCacheManager.loadImage(url: mainEventImgURL as NSURL, imageItem: mainEventImageItem) { (imageItem, image) in
+//            print(imageItem.url)
+//            mainEventImageItem = imageItem
+//            DispatchQueue.main.async {
+//                self.mainEventView.image = image
+//                self.mainEventView.setNeedsDisplay()
+//            }
+//        }
+    }
+    
+    private func addNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadMainEventImage), name: Notification.Name(rawValue: NetworkManager.homeDataNotification), object: networkManager)
+    }
+    
+    @objc private func reloadMainEventImage() {
+        guard let homeData = self.networkManager.homeData else {
+            return
+        }
+        let mainImageURLString = homeData.mainEvent.imageUploadPath + homeData.mainEvent.mobTHUM
+        guard let mainImageURL = URL(string: mainImageURLString) else {
+            return
+        }
+        let mainImageItem = ImageItem(url: mainImageURL)
+        imageCacheManager.loadImage(url: mainImageURL as NSURL, imageItem: mainImageItem) { (imageItem, image) in
+            DispatchQueue.main.async {
+                self.mainEventView.image = image
+                self.mainEventView.setNeedsDisplay()
+            }
+        }
+        
     }
     
     private func setChild() {
@@ -128,7 +169,6 @@ class HomeViewController: UIViewController {
             //mainEventView.bottomAnchor.constraint(equalTo: eventsVC.view.topAnchor)
             mainEventView.heightAnchor.constraint(equalToConstant: 800)
         ])
-        mainEventView.image = UIImage(named: "sampleMenu")
     }
     
     private func configureEventsVCViewConstraint() {

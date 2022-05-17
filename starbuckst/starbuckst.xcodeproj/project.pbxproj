@@ -20,11 +20,13 @@
 		006D2BD42831F0690077CF88 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D2BD32831F0690077CF88 /* JSONConverter.swift */; };
 		006D2BD72831F3540077CF88 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D2BD62831F3540077CF88 /* NetworkManager.swift */; };
 		006D2BD92831F8D90077CF88 /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D2BD82831F8D90077CF88 /* HomeData.swift */; };
+		006D2BDD283243470077CF88 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D2BDC283243470077CF88 /* ImageCacheManager.swift */; };
 		008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DC282B875100F2E826 /* UIColorExtension.swift */; };
 		008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */; };
 		008CA9E4282B8E3700F2E826 /* Santana-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */; };
 		008CA9F2282CB47600F2E826 /* HorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9F1282CB47600F2E826 /* HorizontalCollectionView.swift */; };
 		008CA9F7282CF7CD00F2E826 /* HomeYourRecommandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */; };
+		0093A490283338AB0064E071 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0093A48F283338AB0064E071 /* ImageItem.swift */; };
 		0095729F282A05D20018DC61 /* HomeYourRecommandViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */; };
 		009572A5282A08200018DC61 /* HomeHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009572A4282A08200018DC61 /* HomeHeaderButton.swift */; };
 		00B99ED328290A0500A4B2B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99ED228290A0500A4B2B6 /* AppDelegate.swift */; };
@@ -52,11 +54,13 @@
 		006D2BD32831F0690077CF88 /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		006D2BD62831F3540077CF88 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		006D2BD82831F8D90077CF88 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
+		006D2BDC283243470077CF88 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		008CA9DC282B875100F2E826 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Santana-Black.ttf"; sourceTree = "<group>"; };
 		008CA9F1282CB47600F2E826 /* HorizontalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionView.swift; sourceTree = "<group>"; };
 		008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandHeader.swift; sourceTree = "<group>"; };
+		0093A48F283338AB0064E071 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandViewCell.swift; sourceTree = "<group>"; };
 		009572A4282A08200018DC61 /* HomeHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderButton.swift; sourceTree = "<group>"; };
 		00B99ECF28290A0500A4B2B6 /* starbuckst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = starbuckst.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +106,7 @@
 			children = (
 				006D2BD52831F2BE0077CF88 /* home */,
 				00344322282E6EFA0087795B /* Events.swift */,
+				0093A48F283338AB0064E071 /* ImageItem.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 				006D2BD12831ECEC0077CF88 /* HTTPMethod.swift */,
 				006D2BD32831F0690077CF88 /* JSONConverter.swift */,
 				006D2BD62831F3540077CF88 /* NetworkManager.swift */,
+				006D2BDC283243470077CF88 /* ImageCacheManager.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0093A490283338AB0064E071 /* ImageItem.swift in Sources */,
 				0034431B282E06590087795B /* HomeEventsViewCell.swift in Sources */,
 				00B99ED728290A0500A4B2B6 /* MainTabBarViewController.swift in Sources */,
 				008CA9F7282CF7CD00F2E826 /* HomeYourRecommandHeader.swift in Sources */,
@@ -294,6 +301,7 @@
 				0034431D282E0B890087795B /* HomeYourRecommandViewController.swift in Sources */,
 				0034431F282E0F530087795B /* Amodel.swift in Sources */,
 				006D2BD72831F3540077CF88 /* NetworkManager.swift in Sources */,
+				006D2BDD283243470077CF88 /* ImageCacheManager.swift in Sources */,
 				00344325282E6F7B0087795B /* HomeEventsViewController.swift in Sources */,
 				006D2BD42831F0690077CF88 /* JSONConverter.swift in Sources */,
 				00344327282EA29A0087795B /* HomeThisTimeRecommandViewController.swift in Sources */,
