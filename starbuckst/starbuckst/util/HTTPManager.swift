@@ -12,13 +12,14 @@ import os
 final class HTTPManager {
 
     static func requestGET(url: String, complete: @escaping (Data) -> ()) {
-      // complete @escaping  : 클로저가 바로 실행되지 않고, 함수가 종료될 때 해당 클로저가 실행됨
+      // complete @escaping  : 클로저가 바로 실행되지 않고, 조건에 해당될 때 클로저가 실행됨
         guard let validURL = URL(string: url) else { return }
 
         var urlRequest = URLRequest(url: validURL) // URL에 보내는 URLRequest 생성
         urlRequest.httpMethod = HTTPMethod.get.description
 
         URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
+            // 비동기!! -> 서버에서 요청이 처리된 다음 실행되는 부분.
                         // dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
                         // completion handler의 내용은 모두 옵셔널로 넘어온다.
             guard let data = data else { return }

@@ -28,40 +28,28 @@ class HomeViewController: UIViewController {
         //self.title = "Home"
         
         self.scrollView.delegate = self
-        addNotifications()
-        
-        
+        // addNotifications()
         
         setChild()
         setViews()
         setViewConstraints()
         
-        networkManager.getHomeData()
-//        guard let mainEventImgURL = URL(string: homeData.mainEvent.imageUploadPath) else {
-//            print("이미지url없어요")
-//            return
-//        }
-//        print("이미지URL : \(mainEventImgURL)")
-//        var mainEventImageItem = ImageItem(url: mainEventImgURL)
-//
-//        imageCacheManager.loadImage(url: mainEventImgURL as NSURL, imageItem: mainEventImageItem) { (imageItem, image) in
-//            print(imageItem.url)
-//            mainEventImageItem = imageItem
-//            DispatchQueue.main.async {
-//                self.mainEventView.image = image
-//                self.mainEventView.setNeedsDisplay()
-//            }
-//        }
+        // getHomeData가 리턴해준 completion의 정보를 받아옴..
+        networkManager.getHomeData { homeData in
+            self.reloadMainEventImage(homeData: homeData)
+        }
+        
     }
     
     private func addNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadMainEventImage), name: Notification.Name(rawValue: NetworkManager.homeDataNotification), object: networkManager)
+//        NotificationCenter.default.addObserver(self, selector: #selector(reloadMainEventImage), name: Notification.Name(rawValue: NetworkManager.homeDataNotification), object: networkManager)
     }
     
-    @objc private func reloadMainEventImage() {
-        guard let homeData = self.networkManager.homeData else {
+    private func reloadMainEventImage(homeData: HomeData?) {
+        guard let homeData = homeData else {
             return
         }
+        print(homeData)
         let mainImageURLString = homeData.mainEvent.imageUploadPath + homeData.mainEvent.mobTHUM
         guard let mainImageURL = URL(string: mainImageURLString) else {
             return
