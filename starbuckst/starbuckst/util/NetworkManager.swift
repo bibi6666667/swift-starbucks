@@ -26,19 +26,17 @@ final class NetworkManager {
         }
     }
     
-    func getProductInfo(productCDList: [String], completion: @escaping ([ProductInfo]) -> Void) {
-        var productInfoList: [ProductInfo] = []
-        productCDList.forEach { productCD in
-            HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productViewAjax.do", productCD: productCD) { (data) in
-                // 데이터 없음
-                guard let data: ProductInfo = JSONConverter.decodeJson(data: data) else {
-                    return
-                }
-                
-                productInfoList.append(data)
+    func getProductInfo(productCD: String, completion: @escaping (ProductInfo) -> Void) {
+        
+        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productViewAjax.do", productCD: productCD) { (data) in
+            // 데이터 없음
+            var productInfoList: [ProductInfo] = []
+            guard let data: ProductInfo = JSONConverter.decodeJson(data: data) else {
+                return
             }
+            print(data)
+            completion(data)
         }
-        completion(productInfoList)
         
     }
 }

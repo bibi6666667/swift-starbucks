@@ -76,7 +76,6 @@ final class HTTPManager {
                 return
             }
             let stringData = String(data: data, encoding: .utf8)
-            print(stringData)
             complete(data)
         }.resume()
     }

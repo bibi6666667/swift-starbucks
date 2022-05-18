@@ -44,10 +44,14 @@ class HomeViewController: UIViewController {
             self.reloadMainEventImage(homeData: homeData)
             
             // yourRecommand products
-            self.networkManager.getProductInfo(productCDList: homeData.yourRecommand.products) { productInfoList in
-                
-                self.yourRecommandVC.setYourRecommandProducts(products: productInfoList)
+            // TEST
+            let yourRecommandProducts = homeData.yourRecommand.products
+            yourRecommandProducts.forEach { productCD in
+                self.networkManager.getProductInfo(productCD: productCD) { productInfo in
+                    self.yourRecommandVC.setYourRecommandProducts(product: productInfo)
+                }
             }
+            
         }
         
         

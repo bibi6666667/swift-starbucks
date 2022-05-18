@@ -32,8 +32,8 @@ class HomeYourRecommandViewController: UIViewController {
     
     }
     
-    func setYourRecommandProducts(products: [ProductInfo]) {
-        yourRecommandProducts = products
+    func setYourRecommandProducts(product: ProductInfo) {
+        yourRecommandProducts.append(product)
         DispatchQueue.main.async {
             // ??
             self.yourRecommandView.reloadData()
