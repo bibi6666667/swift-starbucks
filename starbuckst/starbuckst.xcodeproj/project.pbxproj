@@ -38,6 +38,7 @@
 		00B99EE72829562D00A4B2B6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99EE62829562D00A4B2B6 /* HomeViewController.swift */; };
 		00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99EE82829563700A4B2B6 /* OrderViewController.swift */; };
 		00B99EEB2829563E00A4B2B6 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */; };
+		00D370EA2834C6E6001C4565 /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D370E92834C6E6001C4565 /* ProductInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		00B99EE62829562D00A4B2B6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		00B99EE82829563700A4B2B6 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		00D370E92834C6E6001C4565 /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				006D2BD82831F8D90077CF88 /* HomeData.swift */,
+				00D370E92834C6E6001C4565 /* ProductInfo.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				00B99ED328290A0500A4B2B6 /* AppDelegate.swift in Sources */,
 				008CA9F2282CB47600F2E826 /* HorizontalCollectionView.swift in Sources */,
 				0034431D282E0B890087795B /* HomeYourRecommandViewController.swift in Sources */,
+				00D370EA2834C6E6001C4565 /* ProductInfo.swift in Sources */,
 				0034431F282E0F530087795B /* Amodel.swift in Sources */,
 				006D2BD72831F3540077CF88 /* NetworkManager.swift in Sources */,
 				006D2BDD283243470077CF88 /* ImageCacheManager.swift in Sources */,

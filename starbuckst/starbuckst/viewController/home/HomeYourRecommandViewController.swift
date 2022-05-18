@@ -14,6 +14,8 @@ class HomeYourRecommandViewController: UIViewController {
     private let yourRecommandView = HorizontalCollectionView()
     private let yourRecommandCellSize = CGSize(width: 200, height: 200)
     
+    private var yourRecommandProducts: [ProductInfo] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,14 @@ class HomeYourRecommandViewController: UIViewController {
     func setYourRecommandViewData(homeData: HomeData) {
         yourRecommandHeader.setRecommandLabel(text: homeData.displayName)
     
+    }
+    
+    func setYourRecommandProducts(products: [ProductInfo]) {
+        yourRecommandProducts = products
+        DispatchQueue.main.async {
+            // ??
+            self.yourRecommandView.reloadData()
+        }
     }
     
     private func setViews() {
@@ -68,13 +78,17 @@ extension HomeYourRecommandViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return yourRecommandProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
             return UICollectionViewCell()
         }
+        let menuName = yourRecommandProducts[indexPath.item].view.productNM // 메뉴이름
+        print("메뉴이름: \(menuName)")
+        // 이미지까지
+        cell.setMenuNameLabel(name: menuName)
         return cell
     }
     

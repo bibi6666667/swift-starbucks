@@ -15,7 +15,7 @@ final class NetworkManager {
     static let identifier = "NetworkManager"
     static let homeDataNotification = "HomeDataNotificationName"
     
-    func getHomeData(completion: @escaping (HomeData?) -> Void) {
+    func getHomeData(completion: @escaping (HomeData?) -> Void) { // escaping 클로저 : 리턴타입처럼 사용
         HTTPManager.requestGET(url: "https://api.codesquad.kr/starbuckst") { data in
             // get요청의 CompletionHandler로 JSON Decoder를 보냄 : 응답 정보를 Swift객체로 변환하기 위해
             // 응답 정보가 단일객체이면 decodeJson()을, 배열이면 decodeJsonArray()를 사용
@@ -24,5 +24,21 @@ final class NetworkManager {
             }
             completion(data)
         }
+    }
+    
+    func getProductInfo(productCDList: [String], completion: @escaping ([ProductInfo]) -> Void) {
+        var productInfoList: [ProductInfo] = []
+        productCDList.forEach { productCD in
+            HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productViewAjax.do", productCD: productCD) { (data) in
+                // 데이터 없음
+                guard let data: ProductInfo = JSONConverter.decodeJson(data: data) else {
+                    return
+                }
+                
+                productInfoList.append(data)
+            }
+        }
+        completion(productInfoList)
+        
     }
 }

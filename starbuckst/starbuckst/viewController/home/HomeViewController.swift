@@ -40,9 +40,16 @@ class HomeViewController: UIViewController {
                 return
             }
 
-            self.reloadMainEventImage(homeData: homeData)
             self.reloadYourRecommandViewData(homeData: homeData)
+            self.reloadMainEventImage(homeData: homeData)
+            
+            // yourRecommand products
+            self.networkManager.getProductInfo(productCDList: homeData.yourRecommand.products) { productInfoList in
+                
+                self.yourRecommandVC.setYourRecommandProducts(products: productInfoList)
+            }
         }
+        
         
     }
     
@@ -52,7 +59,6 @@ class HomeViewController: UIViewController {
     
     private func reloadMainEventImage(homeData: HomeData) {
         let mainImageURLString = homeData.mainEvent.imageUploadPath + homeData.mainEvent.mobTHUM
-        print(mainImageURLString)
         guard let mainImageURL = URL(string: mainImageURLString) else {
             return
         }
