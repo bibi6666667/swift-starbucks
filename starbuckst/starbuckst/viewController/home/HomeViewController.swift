@@ -42,14 +42,13 @@ class HomeViewController: UIViewController {
     }
     
     private func addNotifications() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(reloadMainEventImage), name: Notification.Name(rawValue: NetworkManager.homeDataNotification), object: networkManager)
+
     }
     
     private func reloadMainEventImage(homeData: HomeData?) {
         guard let homeData = homeData else {
             return
         }
-        print(homeData)
         let mainImageURLString = homeData.mainEvent.imageUploadPath + homeData.mainEvent.mobTHUM
         guard let mainImageURL = URL(string: mainImageURLString) else {
             return
@@ -61,7 +60,6 @@ class HomeViewController: UIViewController {
                 self.mainEventView.setNeedsDisplay()
             }
         }
-        
     }
     
     private func setChild() {

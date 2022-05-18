@@ -15,8 +15,6 @@ final class NetworkManager {
     static let identifier = "NetworkManager"
     static let homeDataNotification = "HomeDataNotificationName"
     
-    private(set) var homeData: HomeData?
-    
     func getHomeData(completion: @escaping (HomeData?) -> Void) {
         HTTPManager.requestGET(url: "https://api.codesquad.kr/starbuckst") { data in
             // get요청의 CompletionHandler로 JSON Decoder를 보냄 : 응답 정보를 Swift객체로 변환하기 위해
@@ -25,8 +23,6 @@ final class NetworkManager {
                 return
             }
             completion(data)
-//            self.homeData = data
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NetworkManager.homeDataNotification), object: self)
         }
     }
 }
