@@ -42,6 +42,7 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
     
     func setMenuImageView(image: UIImage) {
         menuImageView.image = image
+        menuImageView.setNeedsDisplay()
     }
     
     func setMenuNameLabel(name: String) {

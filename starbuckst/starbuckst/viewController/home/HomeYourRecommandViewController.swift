@@ -14,7 +14,8 @@ class HomeYourRecommandViewController: UIViewController {
     private let yourRecommandView = HorizontalCollectionView()
     private let yourRecommandCellSize = CGSize(width: 200, height: 200)
     
-    private var yourRecommandProducts: [ProductInfo] = []
+    private var yourRecommandProducts: [String] = []
+    private var yourRecommandProductImages: [UIImage?] = [] // UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +30,23 @@ class HomeYourRecommandViewController: UIViewController {
     
     func setYourRecommandViewData(homeData: HomeData) {
         yourRecommandHeader.setRecommandLabel(text: homeData.displayName)
-    
     }
     
-    func setYourRecommandProducts(product: ProductInfo) {
-        yourRecommandProducts.append(product)
+    func setYourRecommandProducts(productNM: String) {
+        yourRecommandProducts.append(productNM)
         DispatchQueue.main.async {
-            // ??
+            self.yourRecommandView.reloadData()
+        }
+    }
+    
+    func setYourRecommandProductsImage(productImage: UIImage?) {
+        guard let productImage = productImage else {
+            print("이미지 비어있음")
+            yourRecommandProductImages.append(nil)
+            return
+        }
+        yourRecommandProductImages.append(productImage)
+        DispatchQueue.main.async {
             self.yourRecommandView.reloadData()
         }
     }
@@ -85,10 +96,18 @@ extension HomeYourRecommandViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
             return UICollectionViewCell()
         }
-        let menuName = yourRecommandProducts[indexPath.item].view.productNM // 메뉴이름
-        print("메뉴이름: \(menuName)")
-        // 이미지까지
-        cell.setMenuNameLabel(name: menuName)
+        print("제품리스트 : \(yourRecommandProducts)")
+        if !yourRecommandProducts.isEmpty {
+            let menuName = yourRecommandProducts[indexPath.item] // 메뉴이름
+            cell.setMenuNameLabel(name: menuName)
+        }
+        print("이미지리스트 : \(yourRecommandProductImages)")
+        if !yourRecommandProductImages.isEmpty {
+            guard let menuImage = yourRecommandProductImages[indexPath.item] else {
+                return cell
+            } // 메뉴 이미지
+            cell.setMenuImageView(image: menuImage)
+        }
         return cell
     }
     

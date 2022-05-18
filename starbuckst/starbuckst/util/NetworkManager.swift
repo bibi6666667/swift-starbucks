@@ -28,15 +28,23 @@ final class NetworkManager {
     
     func getProductInfo(productCD: String, completion: @escaping (ProductInfo) -> Void) {
         
-        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productViewAjax.do", productCD: productCD) { (data) in
-            // 데이터 없음
-            var productInfoList: [ProductInfo] = []
+        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productViewAjax.do", key: "product_cd", productCD: productCD) { (data) in
             guard let data: ProductInfo = JSONConverter.decodeJson(data: data) else {
                 return
             }
-            print(data)
             completion(data)
         }
-        
     }
+    
+    func getProductImage(productCD: String, completion: @escaping (ProductImage) -> Void) {
+        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productFileAjax.do", key: "PRODUCT_CD", productCD: productCD) { (data) in
+            guard let data: ProductImage = JSONConverter.decodeJson(data: data) else {
+                print("제품이미지 없음")
+                return
+            }
+            completion(data)
+        }
+    }
+    
+    
 }

@@ -58,14 +58,14 @@ final class HTTPManager {
         }.resume()
     }
     
-    static func requestPostByFormData(url: String, productCD: String, complete: @escaping (Data) -> ()) {
+    static func requestPostByFormData(url: String, key: String, productCD: String, complete: @escaping (Data) -> ()) {
         guard let validURL = URL(string: url) else { return }
 
         var urlRequest = URLRequest(url: validURL)
         urlRequest.httpMethod = HTTPMethod.post.description
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        urlRequest.httpBody = "product_cd=\(productCD)".data(using: .utf8) // POST는 보낼 데이터를 Data로 httpBody에 넣어준다
+        urlRequest.httpBody = "\(key)=\(productCD)".data(using: .utf8) // POST는 보낼 데이터를 Data로 httpBody에 넣어준다
 
         URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             guard let data = data else { return }
@@ -75,7 +75,6 @@ final class HTTPManager {
                 }
                 return
             }
-            let stringData = String(data: data, encoding: .utf8)
             complete(data)
         }.resume()
     }

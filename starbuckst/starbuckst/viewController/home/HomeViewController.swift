@@ -39,16 +39,39 @@ class HomeViewController: UIViewController {
             guard let homeData = homeData else {
                 return
             }
-
+            
             self.reloadYourRecommandViewData(homeData: homeData)
             self.reloadMainEventImage(homeData: homeData)
             
             // yourRecommand products
-            // TEST
             let yourRecommandProducts = homeData.yourRecommand.products
             yourRecommandProducts.forEach { productCD in
+                // productInfo
                 self.networkManager.getProductInfo(productCD: productCD) { productInfo in
-                    self.yourRecommandVC.setYourRecommandProducts(product: productInfo)
+                    self.yourRecommandVC.setYourRecommandProducts(productNM: productInfo.view.productNM)
+                }
+                // productImage
+                self.networkManager.getProductImage(productCD: productCD) { productImage in
+                    // file: [File]
+                    // MARK: file이 비어있는 경우???
+                    if productImage.file.isEmpty {
+                        self.yourRecommandVC.setYourRecommandProductsImage(productImage: nil)
+                        return
+                     // file이 없는 경우 처리가 안됨.. 그냥 HomeYourRecommandVC에서 이미지 처리까지 해야하나??
+                    } else {
+                        let productImageFile = productImage.file[0]
+                        guard let productImageURL = URL(string: productImageFile.imgUPLOADPATH + productImageFile.filePATH) else {
+                            return
+                        }
+                        let productImageItem = ImageItem(url: productImageURL)
+                        self.imageCacheManager.loadImage(url: productImageURL as NSURL, imageItem: productImageItem) { (imageItem, uiImage) in
+                            if let uiImage = uiImage {
+                                self.yourRecommandVC.setYourRecommandProductsImage(productImage: uiImage)
+                            }
+                        }
+                    }
+                    
+                    
                 }
             }
             
@@ -58,7 +81,7 @@ class HomeViewController: UIViewController {
     }
     
     private func addNotifications() {
-
+        
     }
     
     private func reloadMainEventImage(homeData: HomeData) {
@@ -67,9 +90,9 @@ class HomeViewController: UIViewController {
             return
         }
         let mainImageItem = ImageItem(url: mainImageURL)
-        imageCacheManager.loadImage(url: mainImageURL as NSURL, imageItem: mainImageItem) { (imageItem, image) in
+        imageCacheManager.loadImage(url: mainImageURL as NSURL, imageItem: mainImageItem) { (imageItem, uiImage) in
             DispatchQueue.main.async { // MARK: 이미지가 보일 때도 있고 안 보일 때도 있음
-                self.mainEventView.image = image
+                self.mainEventView.image = uiImage
                 self.mainEventView.setNeedsDisplay()
             }
         }

@@ -39,6 +39,7 @@
 		00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99EE82829563700A4B2B6 /* OrderViewController.swift */; };
 		00B99EEB2829563E00A4B2B6 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */; };
 		00D370EA2834C6E6001C4565 /* ProductInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D370E92834C6E6001C4565 /* ProductInfo.swift */; };
+		00D370EC28351886001C4565 /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D370EB28351886001C4565 /* ProductImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		00B99EE82829563700A4B2B6 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		00D370E92834C6E6001C4565 /* ProductInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfo.swift; sourceTree = "<group>"; };
+		00D370EB28351886001C4565 /* ProductImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			children = (
 				006D2BD82831F8D90077CF88 /* HomeData.swift */,
 				00D370E92834C6E6001C4565 /* ProductInfo.swift */,
+				00D370EB28351886001C4565 /* ProductImage.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				0034431B282E06590087795B /* HomeEventsViewCell.swift in Sources */,
 				00B99ED728290A0500A4B2B6 /* MainTabBarViewController.swift in Sources */,
 				008CA9F7282CF7CD00F2E826 /* HomeYourRecommandHeader.swift in Sources */,
+				00D370EC28351886001C4565 /* ProductImage.swift in Sources */,
 				0034432B282EA3000087795B /* HomeThisTimeRecommandViewCell.swift in Sources */,
 				006D2BD92831F8D90077CF88 /* HomeData.swift in Sources */,
 				00B99EE92829563700A4B2B6 /* OrderViewController.swift in Sources */,
