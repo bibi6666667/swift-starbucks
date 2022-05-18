@@ -40,6 +40,14 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
         setConstraint()
     }
     
+    func setMenuImageView(image: UIImage) {
+        menuImageView.image = image
+    }
+    
+    func setMenuNameLabel(menu: String) {
+        menuNameLabel.text = menu
+    }
+    
     private func setUI() {
         self.addSubview(menuImageView)
         self.addSubview(menuNameLabel)

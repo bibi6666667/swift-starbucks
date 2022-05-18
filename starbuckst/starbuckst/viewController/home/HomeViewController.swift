@@ -36,7 +36,12 @@ class HomeViewController: UIViewController {
         
         // getHomeData가 리턴해준 completion의 정보를 받아옴..
         networkManager.getHomeData { homeData in
+            guard let homeData = homeData else {
+                return
+            }
+
             self.reloadMainEventImage(homeData: homeData)
+            self.reloadYourRecommandViewData(homeData: homeData)
         }
         
     }
@@ -45,20 +50,24 @@ class HomeViewController: UIViewController {
 
     }
     
-    private func reloadMainEventImage(homeData: HomeData?) {
-        guard let homeData = homeData else {
-            return
-        }
+    private func reloadMainEventImage(homeData: HomeData) {
         let mainImageURLString = homeData.mainEvent.imageUploadPath + homeData.mainEvent.mobTHUM
+        print(mainImageURLString)
         guard let mainImageURL = URL(string: mainImageURLString) else {
             return
         }
         let mainImageItem = ImageItem(url: mainImageURL)
         imageCacheManager.loadImage(url: mainImageURL as NSURL, imageItem: mainImageItem) { (imageItem, image) in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { // MARK: 이미지가 보일 때도 있고 안 보일 때도 있음
                 self.mainEventView.image = image
                 self.mainEventView.setNeedsDisplay()
             }
+        }
+    }
+    
+    private func reloadYourRecommandViewData(homeData: HomeData) {
+        DispatchQueue.main.async { // 뷰 업데이트 코드는 반드시 비동기로!
+            self.yourRecommandVC.setYourRecommandViewData(homeData: homeData)
         }
     }
     

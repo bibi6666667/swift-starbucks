@@ -25,6 +25,11 @@ class HomeYourRecommandViewController: UIViewController {
         setConstraints()
     }
     
+    func setYourRecommandViewData(homeData: HomeData) {
+        yourRecommandHeader.setRecommandLabel(text: homeData.displayName)
+    
+    }
+    
     private func setViews() {
         self.view.addSubview(yourRecommandHeader)
         self.view.addSubview(yourRecommandView)

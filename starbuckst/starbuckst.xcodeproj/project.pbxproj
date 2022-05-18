@@ -92,8 +92,8 @@
 			children = (
 				009572A4282A08200018DC61 /* HomeHeaderButton.swift */,
 				008CA9F1282CB47600F2E826 /* HorizontalCollectionView.swift */,
-				0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */,
 				008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */,
+				0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */,
 				0034431A282E06590087795B /* HomeEventsViewCell.swift */,
 				00344328282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift */,
 				0034432A282EA3000087795B /* HomeThisTimeRecommandViewCell.swift */,
