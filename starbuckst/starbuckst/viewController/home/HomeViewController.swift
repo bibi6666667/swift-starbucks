@@ -10,7 +10,8 @@ import UIKit
 class HomeViewController: UIViewController {
     static let identifier = "HomeViewController"
     
-    private let networkManager = NetworkManager()
+    private let networkManager = NetworkManager.publicNetworkManager
+    private let imageCacheManager = ImageCacheManager.publicCacheManager
     
     private let headerButton: UIButton = HomeHeaderButton()
     private let scrollView = UIScrollView()
@@ -27,12 +28,38 @@ class HomeViewController: UIViewController {
         //self.title = "Home"
         
         self.scrollView.delegate = self
+        // addNotifications()
         
         setChild()
         setViews()
         setViewConstraints()
         
-        networkManager.getHomeData()
+        // getHomeData가 리턴해준 completion의 정보를 받아옴..
+        networkManager.getHomeData { homeData in
+            self.reloadMainEventImage(homeData: homeData)
+        }
+        
+    }
+    
+    private func addNotifications() {
+
+    }
+    
+    private func reloadMainEventImage(homeData: HomeData?) {
+        guard let homeData = homeData else {
+            return
+        }
+        let mainImageURLString = homeData.mainEvent.imageUploadPath + homeData.mainEvent.mobTHUM
+        guard let mainImageURL = URL(string: mainImageURLString) else {
+            return
+        }
+        let mainImageItem = ImageItem(url: mainImageURL)
+        imageCacheManager.loadImage(url: mainImageURL as NSURL, imageItem: mainImageItem) { (imageItem, image) in
+            DispatchQueue.main.async {
+                self.mainEventView.image = image
+                self.mainEventView.setNeedsDisplay()
+            }
+        }
     }
     
     private func setChild() {
@@ -128,7 +155,6 @@ class HomeViewController: UIViewController {
             //mainEventView.bottomAnchor.constraint(equalTo: eventsVC.view.topAnchor)
             mainEventView.heightAnchor.constraint(equalToConstant: 800)
         ])
-        mainEventView.image = UIImage(named: "sampleMenu")
     }
     
     private func configureEventsVCViewConstraint() {
