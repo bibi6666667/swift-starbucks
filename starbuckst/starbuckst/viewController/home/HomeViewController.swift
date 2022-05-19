@@ -25,10 +25,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.title = "Home"
-        
-        self.scrollView.delegate = self
-        // addNotifications()
         
         setChild()
         setViews()
@@ -188,11 +184,5 @@ class HomeViewController: UIViewController {
     @objc
     private func touchedHeaderButton() {
         // 다음 what's new 화면으로 이동
-    }
-}
-
-extension HomeViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrolled")
     }
 }

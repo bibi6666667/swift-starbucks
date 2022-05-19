@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00332DE828363949002434EE /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00332DE728363949002434EE /* OrderListViewController.swift */; };
+		00332DEB283639B5002434EE /* OrderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00332DEA283639B5002434EE /* OrderHeaderView.swift */; };
+		00332DED283639EF002434EE /* VerticalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00332DEC283639EF002434EE /* VerticalCollectionView.swift */; };
 		0034431B282E06590087795B /* HomeEventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034431A282E06590087795B /* HomeEventsViewCell.swift */; };
 		0034431D282E0B890087795B /* HomeYourRecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034431C282E0B890087795B /* HomeYourRecommandViewController.swift */; };
 		0034431F282E0F530087795B /* Amodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034431E282E0F530087795B /* Amodel.swift */; };
@@ -43,6 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00332DE728363949002434EE /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
+		00332DEA283639B5002434EE /* OrderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderView.swift; sourceTree = "<group>"; };
+		00332DEC283639EF002434EE /* VerticalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionView.swift; sourceTree = "<group>"; };
 		0034431A282E06590087795B /* HomeEventsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventsViewCell.swift; sourceTree = "<group>"; };
 		0034431C282E0B890087795B /* HomeYourRecommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandViewController.swift; sourceTree = "<group>"; };
 		0034431E282E0F530087795B /* Amodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amodel.swift; sourceTree = "<group>"; };
@@ -91,11 +97,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00332DE628362DE0002434EE /* order */ = {
+			isa = PBXGroup;
+			children = (
+				00B99EE82829563700A4B2B6 /* OrderViewController.swift */,
+				00332DE728363949002434EE /* OrderListViewController.swift */,
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
+		00332DE928363966002434EE /* order */ = {
+			isa = PBXGroup;
+			children = (
+				00332DEA283639B5002434EE /* OrderHeaderView.swift */,
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
 		00344320282E69170087795B /* home */ = {
 			isa = PBXGroup;
 			children = (
 				009572A4282A08200018DC61 /* HomeHeaderButton.swift */,
-				008CA9F1282CB47600F2E826 /* HorizontalCollectionView.swift */,
 				008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */,
 				0095729E282A05D20018DC61 /* HomeYourRecommandViewCell.swift */,
 				0034431A282E06590087795B /* HomeEventsViewCell.swift */,
@@ -168,7 +190,10 @@
 		0095729B282A05240018DC61 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				008CA9F1282CB47600F2E826 /* HorizontalCollectionView.swift */,
+				00332DEC283639EF002434EE /* VerticalCollectionView.swift */,
 				00344320282E69170087795B /* home */,
+				00332DE928363966002434EE /* order */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -178,7 +203,7 @@
 			children = (
 				00B99ED628290A0500A4B2B6 /* MainTabBarViewController.swift */,
 				008CA9F5282CE05A00F2E826 /* home */,
-				00B99EE82829563700A4B2B6 /* OrderViewController.swift */,
+				00332DE628362DE0002434EE /* order */,
 				00B99EEA2829563E00A4B2B6 /* FavoriteViewController.swift */,
 			);
 			path = viewController;
@@ -316,11 +341,14 @@
 				006D2BD22831ECEC0077CF88 /* HTTPMethod.swift in Sources */,
 				00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */,
 				00B99EEB2829563E00A4B2B6 /* FavoriteViewController.swift in Sources */,
+				00332DED283639EF002434EE /* VerticalCollectionView.swift in Sources */,
 				008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */,
+				00332DE828363949002434EE /* OrderListViewController.swift in Sources */,
 				00344323282E6EFA0087795B /* HomeEvents.swift in Sources */,
 				00B99EE72829562D00A4B2B6 /* HomeViewController.swift in Sources */,
 				00344329282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift in Sources */,
 				008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */,
+				00332DEB283639B5002434EE /* OrderHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

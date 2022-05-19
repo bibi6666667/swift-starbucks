@@ -22,7 +22,13 @@ class MainTabBarViewController: UITabBarController {
                                           selectedImage: UIImage(systemName: "house.fill"))
         homeVC.tabBarItem = homeTabBarItem
         
-        self.viewControllers = [homeVC]
+        let orderVC = OrderViewController()
+        let orderTabBarItem = UITabBarItem(title: "Order",
+                                           image: UIImage(systemName: "cup.and.saucer"),
+                                           selectedImage: UIImage(systemName: "cup.and.saucer.fill"))
+        orderVC.tabBarItem = orderTabBarItem
+        
+        self.viewControllers = [homeVC, orderVC]
         
         self.tabBar.backgroundColor = UIColor.customColor(.white)
         self.tabBar.tintColor = UIColor.customColor(.primaryGreen)
