@@ -36,7 +36,7 @@ class HomeHeaderButton: UIButton {
     }
     
     private func setUI() {
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor.customColor(.white)
         self.addSubview(envelopImageView)
         self.addSubview(headerLabel)
     }

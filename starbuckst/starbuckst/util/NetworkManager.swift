@@ -28,7 +28,7 @@ final class NetworkManager {
     
     func getProductInfo(productCD: String, completion: @escaping (ProductInfo) -> Void) {
         
-        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productViewAjax.do", key: "product_cd", productCD: productCD) { (data) in
+        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productViewAjax.do", key: "product_cd", value: productCD) { (data) in
             guard let data: ProductInfo = JSONConverter.decodeJson(data: data) else {
                 return
             }
@@ -37,8 +37,17 @@ final class NetworkManager {
     }
     
     func getProductImage(productCD: String, completion: @escaping (ProductImage) -> Void) {
-        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productFileAjax.do", key: "PRODUCT_CD", productCD: productCD) { (data) in
+        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productFileAjax.do", key: "PRODUCT_CD", value: productCD) { (data) in
             guard let data: ProductImage = JSONConverter.decodeJson(data: data) else {
+                return
+            }
+            completion(data)
+        }
+    }
+    
+    func getHomeEvents(completion: @escaping (HomeEvents) -> Void) {
+        HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/whats_new/getIngList.do", key: "MENU_CD", value: "all") { (data) in
+            guard let data: HomeEvents = JSONConverter.decodeJson(data: data) else {
                 return
             }
             completion(data)

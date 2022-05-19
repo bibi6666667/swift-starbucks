@@ -19,6 +19,12 @@ class HomeEventsViewController: UIViewController {
     private let eventsView = HorizontalCollectionView()
     private let eventsViewCellSize = CGSize(width: 250, height: 250)
     
+    private var eventsTitles: [String] = []
+    private var eventsImages: [UIImage] = []
+    
+    private let networkManager = NetworkManager.publicNetworkManager
+    private let imageCacheManager = ImageCacheManager.publicCacheManager
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +34,50 @@ class HomeEventsViewController: UIViewController {
         
         setViews()
         setConstraints()
+        
+        networkManager.getHomeEvents { (homeEvents) in
+            self.setEventsViewData(homeEvents: homeEvents)
+        }
+    }
+    
+    func setEventsViewData(homeEvents: HomeEvents) {
+        
+        let eventList = homeEvents.list
+        presetEventsCellCount(eventsCount: eventList.count)
+        
+        for index in eventList.indices {
+            let event = eventList[index]
+            setEventsTitles(index: index, event: event)
+            setEventsImages(index: index, event: event)
+            // setEventsContents?
+        }
+    }
+    
+    private func presetEventsCellCount(eventsCount: Int) {
+        eventsTitles = Array<String>(repeating: "", count: eventsCount)
+        eventsImages = Array<UIImage>(repeating: UIImage(systemName: "camera.metering.unknown") ?? UIImage(), count: eventsCount)
+    }
+    
+    private func setEventsTitles(index: Int, event: List) {
+        self.eventsTitles[index] = event.title
+        DispatchQueue.main.async {
+            self.eventsView.reloadData()
+        }
+    }
+    
+    private func setEventsImages(index: Int, event: List) {
+        guard let eventImageURL = URL(string: event.imgUPLOADPATH + "/upload/promotion/" + event.mobTHUM) else {
+            return
+        }
+        let eventImageItem = ImageItem(url: eventImageURL)
+        self.imageCacheManager.loadImage(url: eventImageURL as NSURL, imageItem: eventImageItem) { (imageItem, uiImage) in
+            if let uiImage = uiImage {
+                self.eventsImages[index] = uiImage
+                DispatchQueue.main.async {
+                    self.eventsView.reloadData()
+                }
+            }
+        }
     }
     
     private func setViews() {
@@ -70,13 +120,18 @@ extension HomeEventsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return eventsTitles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeEventsViewCell.identifier, for: indexPath) as? HomeEventsViewCell else {
             return UICollectionViewCell()
         }
+        let eventTitle = eventsTitles[indexPath.item]
+        cell.setEventTitleLabel(title: eventTitle)
+        let eventImage = eventsImages[indexPath.item] // 이미지가 잘 안뜸..
+        cell.setEventImageView(image: eventImage)
+        // setEventContentLabel ??
         return cell
     }
     

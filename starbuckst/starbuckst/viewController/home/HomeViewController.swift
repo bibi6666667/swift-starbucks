@@ -88,13 +88,15 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(contentView)
         scrollView.backgroundColor = UIColor.customColor(.white)
         
-        self.view.addSubview(yourRecommandVC.view)
+        contentView.addSubview(yourRecommandVC.view)
+        contentView.addSubview(mainEventView)
+        contentView.addSubview(eventsVC.view)
+        contentView.addSubview(thisTimeRecommandVC.view)
         
-        self.view.addSubview(mainEventView)
-        
-        self.view.addSubview(eventsVC.view)
-        
-        self.view.addSubview(thisTimeRecommandVC.view)
+//        self.view.addSubview(yourRecommandVC.view)
+//        self.view.addSubview(mainEventView)
+//        self.view.addSubview(eventsVC.view)
+//        self.view.addSubview(thisTimeRecommandVC.view)
     }
     
     private func setViewConstraints() {
@@ -157,7 +159,7 @@ class HomeViewController: UIViewController {
             mainEventView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             mainEventView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             //mainEventView.bottomAnchor.constraint(equalTo: eventsVC.view.topAnchor)
-            mainEventView.heightAnchor.constraint(equalToConstant: 800)
+            mainEventView.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
     
