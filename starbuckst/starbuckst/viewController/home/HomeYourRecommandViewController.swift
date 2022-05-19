@@ -41,7 +41,7 @@ class HomeYourRecommandViewController: UIViewController {
         for index in products.indices {
             let productCD = products[index]
             setYourRecommandProductNames(index: index, productCD: productCD)
-            setYourRecommandProductsImage(index: index, productCD: productCD)
+            setYourRecommandProductImages(index: index, productCD: productCD)
         }
         
     }
@@ -60,7 +60,7 @@ class HomeYourRecommandViewController: UIViewController {
         }
     }
     
-    private func setYourRecommandProductsImage(index: Int, productCD: String) {
+    private func setYourRecommandProductImages(index: Int, productCD: String) {
         networkManager.getProductImage(productCD: productCD) { productImage in
             // file: [File]
             // MARK: API 응답에서 file이 비어있는 경우가 존재함..
@@ -127,14 +127,10 @@ extension HomeYourRecommandViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
             return UICollectionViewCell()
         }
-        //if !yourRecommandProducts.isEmpty {
-            let menuName = yourRecommandProductNames[indexPath.item] // 메뉴이름
-            cell.setMenuNameLabel(name: menuName)
-        //}
-        // if !yourRecommandProductImages.isEmpty {
-            let menuImage = yourRecommandProductImages[indexPath.item]
-            cell.setMenuImageView(image: menuImage)
-        //}
+        let menuName = yourRecommandProductNames[indexPath.item] // 메뉴이름
+        cell.setMenuNameLabel(name: menuName)
+        let menuImage = yourRecommandProductImages[indexPath.item]
+        cell.setMenuImageView(image: menuImage)
         return cell
     }
     

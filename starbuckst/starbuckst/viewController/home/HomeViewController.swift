@@ -42,6 +42,7 @@ class HomeViewController: UIViewController {
             
             self.reloadMainEventImage(homeData: homeData)
             self.yourRecommandVC.setYourRecommandViewData(homeData: homeData)
+            self.thisTimeRecommandVC.setThisTimeRecommandViewData(homeData: homeData)
         }
     }
     
