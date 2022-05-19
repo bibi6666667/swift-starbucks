@@ -39,7 +39,6 @@ final class NetworkManager {
     func getProductImage(productCD: String, completion: @escaping (ProductImage) -> Void) {
         HTTPManager.requestPostByFormData(url: "https://www.starbucks.co.kr/menu/productFileAjax.do", key: "PRODUCT_CD", productCD: productCD) { (data) in
             guard let data: ProductImage = JSONConverter.decodeJson(data: data) else {
-                print("제품이미지 없음")
                 return
             }
             completion(data)

@@ -8,44 +8,78 @@
 import UIKit
 
 class HomeYourRecommandViewController: UIViewController {
-
+    
     private let yourRecommandHeader = HomeYourRecommandHeader()
     
     private let yourRecommandView = HorizontalCollectionView()
     private let yourRecommandCellSize = CGSize(width: 200, height: 200)
     
     private var yourRecommandProducts: [String] = []
-    private var yourRecommandProductImages: [UIImage?] = [] // UIImage?
+    private var yourRecommandProductImages: [UIImage] = [] // UIImage?
+    
+    private let networkManager = NetworkManager.publicNetworkManager
+    private let imageCacheManager = ImageCacheManager.publicCacheManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.yourRecommandView.delegate = self
         self.yourRecommandView.dataSource = self
         self.yourRecommandView.register(HomeYourRecommandViewCell.self, forCellWithReuseIdentifier: HomeYourRecommandViewCell.identifier)
         
         setViews()
         setConstraints()
+        
+        
     }
     
     func setYourRecommandViewData(homeData: HomeData) {
+        
         yourRecommandHeader.setRecommandLabel(text: homeData.displayName)
+        
+        // yourRecommand products
+        let products = homeData.yourRecommand.products
+        yourRecommandProducts = Array<String>(repeating: "", count: products.count)
+        yourRecommandProductImages = Array<UIImage>(repeating: UIImage(), count: products.count)
+        
+        for index in products.indices {
+            let productCD = products[index]
+            // productInfo
+            networkManager.getProductInfo(productCD: productCD) { productInfo in
+                self.setYourRecommandProducts(index: index, productNM: productInfo.view.productNM)
+            }
+            // productImage
+            networkManager.getProductImage(productCD: productCD) { productImage in
+                // file: [File]
+                print("파일 : \(productImage.file)")
+                // MARK: file이 비어있는 경우???
+                if !productImage.file.isEmpty {
+                    let productImageFile = productImage.file[0] // 위험..
+                    guard let productImageURL = URL(string: productImageFile.imgUPLOADPATH + productImageFile.filePATH) else {
+                        return
+                    }
+                    let productImageItem = ImageItem(url: productImageURL)
+                    self.imageCacheManager.loadImage(url: productImageURL as NSURL, imageItem: productImageItem) { (imageItem, uiImage) in
+                        if let uiImage = uiImage {
+                            self.setYourRecommandProductsImage(index: index, productImage: uiImage)
+                        }
+                    }
+                }
+            }
+        }
+        
+        
     }
     
-    func setYourRecommandProducts(productNM: String) {
-        yourRecommandProducts.append(productNM)
+    private func setYourRecommandProducts(index: Int, productNM: String) {
+        yourRecommandProducts[index] = productNM
         DispatchQueue.main.async {
             self.yourRecommandView.reloadData()
         }
     }
     
-    func setYourRecommandProductsImage(productImage: UIImage?) {
-        guard let productImage = productImage else {
-            print("이미지 비어있음")
-            yourRecommandProductImages.append(nil)
-            return
-        }
-        yourRecommandProductImages.append(productImage)
+    private func setYourRecommandProductsImage(index: Int, productImage: UIImage) {
+        yourRecommandProductImages[index] = productImage
         DispatchQueue.main.async {
             self.yourRecommandView.reloadData()
         }
@@ -103,9 +137,7 @@ extension HomeYourRecommandViewController: UICollectionViewDataSource {
         }
         print("이미지리스트 : \(yourRecommandProductImages)")
         if !yourRecommandProductImages.isEmpty {
-            guard let menuImage = yourRecommandProductImages[indexPath.item] else {
-                return cell
-            } // 메뉴 이미지
+            let menuImage = yourRecommandProductImages[indexPath.item]
             cell.setMenuImageView(image: menuImage)
         }
         return cell

@@ -40,44 +40,9 @@ class HomeViewController: UIViewController {
                 return
             }
             
-            self.reloadYourRecommandViewData(homeData: homeData)
             self.reloadMainEventImage(homeData: homeData)
-            
-            // yourRecommand products
-            let yourRecommandProducts = homeData.yourRecommand.products
-            yourRecommandProducts.forEach { productCD in
-                // productInfo
-                self.networkManager.getProductInfo(productCD: productCD) { productInfo in
-                    self.yourRecommandVC.setYourRecommandProducts(productNM: productInfo.view.productNM)
-                }
-                // productImage
-                self.networkManager.getProductImage(productCD: productCD) { productImage in
-                    // file: [File]
-                    // MARK: file이 비어있는 경우???
-                    if productImage.file.isEmpty {
-                        self.yourRecommandVC.setYourRecommandProductsImage(productImage: nil)
-                        return
-                     // file이 없는 경우 처리가 안됨.. 그냥 HomeYourRecommandVC에서 이미지 처리까지 해야하나??
-                    } else {
-                        let productImageFile = productImage.file[0]
-                        guard let productImageURL = URL(string: productImageFile.imgUPLOADPATH + productImageFile.filePATH) else {
-                            return
-                        }
-                        let productImageItem = ImageItem(url: productImageURL)
-                        self.imageCacheManager.loadImage(url: productImageURL as NSURL, imageItem: productImageItem) { (imageItem, uiImage) in
-                            if let uiImage = uiImage {
-                                self.yourRecommandVC.setYourRecommandProductsImage(productImage: uiImage)
-                            }
-                        }
-                    }
-                    
-                    
-                }
-            }
-            
+            self.yourRecommandVC.setYourRecommandViewData(homeData: homeData)
         }
-        
-        
     }
     
     private func addNotifications() {
@@ -98,11 +63,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func reloadYourRecommandViewData(homeData: HomeData) {
-        DispatchQueue.main.async { // 뷰 업데이트 코드는 반드시 비동기로!
-            self.yourRecommandVC.setYourRecommandViewData(homeData: homeData)
-        }
-    }
+    
     
     private func setChild() {
         self.view.addSubview(yourRecommandVC.view)

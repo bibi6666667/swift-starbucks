@@ -31,7 +31,9 @@ class HomeYourRecommandHeader: UIView {
     }
     
     func setRecommandLabel(text: String) {
-        recommandLabel.text = text + " 님을 위한 추천 메뉴"
+        DispatchQueue.main.async {
+            self.recommandLabel.text = text + " 님을 위한 추천 메뉴"
+        }
     }
     
     private func setUI() {
