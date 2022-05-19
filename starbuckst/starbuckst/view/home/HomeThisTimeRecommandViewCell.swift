@@ -25,6 +25,7 @@ class HomeThisTimeRecommandViewCell: UICollectionViewCell {
         var label = UILabel()
         label.text = "1 Sample Menu"
         label.font = UIFont.customFont(.santanaBlackSmall)
+        label.numberOfLines = 0
         return label
     }()
     
