@@ -36,31 +36,35 @@ class HomeViewController: UIViewController {
         
         // getHomeData가 리턴해준 completion의 정보를 받아옴..
         networkManager.getHomeData { homeData in
+            guard let homeData = homeData else {
+                return
+            }
+            
             self.reloadMainEventImage(homeData: homeData)
+            self.yourRecommandVC.setYourRecommandViewData(homeData: homeData)
+            self.thisTimeRecommandVC.setThisTimeRecommandViewData(homeData: homeData)
         }
-        
     }
     
     private func addNotifications() {
-
+        
     }
     
-    private func reloadMainEventImage(homeData: HomeData?) {
-        guard let homeData = homeData else {
-            return
-        }
+    private func reloadMainEventImage(homeData: HomeData) {
         let mainImageURLString = homeData.mainEvent.imageUploadPath + homeData.mainEvent.mobTHUM
         guard let mainImageURL = URL(string: mainImageURLString) else {
             return
         }
         let mainImageItem = ImageItem(url: mainImageURL)
-        imageCacheManager.loadImage(url: mainImageURL as NSURL, imageItem: mainImageItem) { (imageItem, image) in
-            DispatchQueue.main.async {
-                self.mainEventView.image = image
+        imageCacheManager.loadImage(url: mainImageURL as NSURL, imageItem: mainImageItem) { (imageItem, uiImage) in
+            DispatchQueue.main.async { // MARK: 이미지가 보일 때도 있고 안 보일 때도 있음
+                self.mainEventView.image = uiImage
                 self.mainEventView.setNeedsDisplay()
             }
         }
     }
+    
+    
     
     private func setChild() {
         self.view.addSubview(yourRecommandVC.view)
@@ -84,13 +88,15 @@ class HomeViewController: UIViewController {
         scrollView.addSubview(contentView)
         scrollView.backgroundColor = UIColor.customColor(.white)
         
-        self.view.addSubview(yourRecommandVC.view)
+        contentView.addSubview(yourRecommandVC.view)
+        contentView.addSubview(mainEventView)
+        contentView.addSubview(eventsVC.view)
+        contentView.addSubview(thisTimeRecommandVC.view)
         
-        self.view.addSubview(mainEventView)
-        
-        self.view.addSubview(eventsVC.view)
-        
-        self.view.addSubview(thisTimeRecommandVC.view)
+//        self.view.addSubview(yourRecommandVC.view)
+//        self.view.addSubview(mainEventView)
+//        self.view.addSubview(eventsVC.view)
+//        self.view.addSubview(thisTimeRecommandVC.view)
     }
     
     private func setViewConstraints() {
@@ -153,7 +159,7 @@ class HomeViewController: UIViewController {
             mainEventView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             mainEventView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             //mainEventView.bottomAnchor.constraint(equalTo: eventsVC.view.topAnchor)
-            mainEventView.heightAnchor.constraint(equalToConstant: 800)
+            mainEventView.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
     

@@ -30,6 +30,12 @@ class HomeYourRecommandHeader: UIView {
         setConstraint()
     }
     
+    func setRecommandLabel(text: String) {
+        DispatchQueue.main.async {
+            self.recommandLabel.text = text + " 님을 위한 추천 메뉴"
+        }
+    }
+    
     private func setUI() {
         self.addSubview(recommandLabel)
     }

@@ -24,6 +24,8 @@ class HomeEventsViewCell: UICollectionViewCell {
         var label = UILabel()
         label.text = "Event Title"
         label.font = UIFont.customFont(.santanaBlackMedium)
+        label.numberOfLines = 0
+        label.textAlignment = .natural
         return label
     }()
     
@@ -31,6 +33,7 @@ class HomeEventsViewCell: UICollectionViewCell {
         var label = UILabel()
         label.text = "Event Content"
         label.font = UIFont.customFont(.santanaBlackSmall)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -46,16 +49,29 @@ class HomeEventsViewCell: UICollectionViewCell {
         setConstraint()
     }
     
+    func setEventImageView(image: UIImage) {
+        eventImageView.image = image
+        eventImageView.setNeedsDisplay()
+    }
+    
+    func setEventTitleLabel(title: String) {
+        eventTitleLabel.text = title
+    }
+    
+    func setEventContentLabel(content: String) {
+        eventContentLabel.text = content
+    }
+    
     private func setUI() {
         self.addSubview(eventImageView)
         self.addSubview(eventTitleLabel)
-        self.addSubview(eventContentLabel)
+        //self.addSubview(eventContentLabel)
     }
     
     private func setConstraint() {
         configureEventImageViewConstraint()
         configureEventTitleLabelConstraint()
-        configureEventContentLabelConstraint()
+        //configureEventContentLabelConstraint()
     }
     
     private func configureEventImageViewConstraint() {
@@ -73,6 +89,8 @@ class HomeEventsViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             eventTitleLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor),
             eventTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            eventTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            eventTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
@@ -81,6 +99,7 @@ class HomeEventsViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             eventContentLabel.topAnchor.constraint(equalTo: eventTitleLabel.bottomAnchor),
             eventContentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            eventContentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             eventContentLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }

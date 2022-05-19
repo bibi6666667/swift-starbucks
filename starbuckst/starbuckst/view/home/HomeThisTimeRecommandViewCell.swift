@@ -21,10 +21,12 @@ class HomeThisTimeRecommandViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let menuLabel: UILabel = {
+    private let menuNameLabel: UILabel = {
         var label = UILabel()
         label.text = "1 Sample Menu"
         label.font = UIFont.customFont(.santanaBlackSmall)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -40,10 +42,19 @@ class HomeThisTimeRecommandViewCell: UICollectionViewCell {
         setConstraint()
     }
     
+    func setMenuImageView(image: UIImage) {
+        menuImageView.image = image
+        menuImageView.setNeedsDisplay()
+    }
+    
+    func setMenuNameLabel(name: String, rank: String) {
+        menuNameLabel.text = "\(rank) \(name)"
+        setMenuLabelAttribute(rank: rank)
+    }
+    
     private func setUI() {
         self.addSubview(menuImageView)
-        self.addSubview(menuLabel)
-        setMenuLabelAttribute()
+        self.addSubview(menuNameLabel)
     }
     
     private func setConstraint() {
@@ -62,21 +73,22 @@ class HomeThisTimeRecommandViewCell: UICollectionViewCell {
     }
     
     private func configureMenuLabelConstraint() {
-        menuLabel.translatesAutoresizingMaskIntoConstraints = false
+        menuNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            menuLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor),
-            menuLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            menuLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor),
+            menuNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            menuNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            menuNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
-    private func setMenuLabelAttribute() {
-        let fullText = menuLabel.text ?? ""
+    private func setMenuLabelAttribute(rank: String) {
+        let fullText = menuNameLabel.text ?? ""
         let fullTextNSString = fullText as NSString
         let attributedString = NSMutableAttributedString(string: fullText)
         let font = UIFont.customFont(.santanaBlackMedium)
-        attributedString.addAttribute(.font, value: font, range: fullTextNSString.range(of: "1"))
-        attributedString.addAttribute(.foregroundColor, value: UIColor.customColor(.primaryGreen), range: fullTextNSString.range(of: "1"))
-        menuLabel.attributedText = attributedString
+        attributedString.addAttribute(.font, value: font, range: fullTextNSString.range(of: rank))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.customColor(.primaryGreen), range: fullTextNSString.range(of: rank))
+        menuNameLabel.attributedText = attributedString
     }
 }

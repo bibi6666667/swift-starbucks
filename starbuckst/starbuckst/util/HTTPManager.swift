@@ -57,7 +57,28 @@ final class HTTPManager {
             complete(data)
         }.resume()
     }
+    
+    static func requestPostByFormData(url: String, key: String, value: String, complete: @escaping (Data) -> ()) {
+        guard let validURL = URL(string: url) else { return }
 
+        var urlRequest = URLRequest(url: validURL)
+        urlRequest.httpMethod = HTTPMethod.post.description
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = "\(key)=\(value)".data(using: .utf8) // POST는 보낼 데이터를 Data로 httpBody에 넣어준다
+
+        URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
+            guard let data = data else { return }
+            guard let response = urlResponse as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
+                if let response = urlResponse as? HTTPURLResponse {
+                    os_log("%@", "\(response.statusCode)")
+                }
+                return
+            }
+            complete(data)
+        }.resume()
+    }
+    
     //Patch - Post와 비슷함
     static func requestPATCH(url: String, encodingData: Data, complete: @escaping (Data) -> ()) {
         guard let validURL = URL(string: url) else { return }

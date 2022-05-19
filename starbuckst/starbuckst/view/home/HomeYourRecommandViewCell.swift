@@ -25,6 +25,8 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
         var label = UILabel()
         label.text = "Sample Menu"
         label.font = UIFont.customFont(.santanaBlackSmall)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
@@ -38,6 +40,15 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
         super.init(coder: coder)
         setUI()
         setConstraint()
+    }
+    
+    func setMenuImageView(image: UIImage) {
+        menuImageView.image = image
+        menuImageView.setNeedsDisplay()
+    }
+    
+    func setMenuNameLabel(name: String) {
+        menuNameLabel.text = name
     }
     
     private func setUI() {
@@ -64,8 +75,9 @@ class HomeYourRecommandViewCell: UICollectionViewCell {
         menuNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             menuNameLabel.topAnchor.constraint(equalTo: menuImageView.bottomAnchor),
-            menuNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            menuNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            menuNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            menuNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            menuNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
 }
