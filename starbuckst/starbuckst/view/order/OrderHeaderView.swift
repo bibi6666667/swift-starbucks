@@ -7,14 +7,43 @@
 
 import UIKit
 
-class OrderHeaderView: UIStackView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class OrderHeaderView: UIView {
+    
+    private let headerLabel: UILabel = {
+        var label = UILabel()
+        label.text = "Order"
+        label.font = UIFont.customFont(.santanaBlackLarge)
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+        setConstraint()
     }
-    */
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setUI()
+        setConstraint()
+    }
+    
+    private func setUI() {
+        self.backgroundColor = UIColor.customColor(.white)
+        self.addSubview(headerLabel)
+    }
+    
+    private func setConstraint() {
+        configureHeaderLabelConstraint()
+    }
+
+    private func configureHeaderLabelConstraint() {
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            headerLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            headerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            headerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+    }
 
 }

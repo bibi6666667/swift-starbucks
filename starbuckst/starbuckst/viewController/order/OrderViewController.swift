@@ -47,6 +47,7 @@ class OrderViewController: UIViewController {
         scrollView.backgroundColor = UIColor.customColor(.white)
         
         contentView.addSubview(orderListVC.view)
+        orderListVC.view.backgroundColor = .blue
     }
     
     private func setViewConstraints() {
@@ -95,7 +96,9 @@ class OrderViewController: UIViewController {
             orderListVC.view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: viewSpace),
             orderListVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             orderListVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            orderListVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+             orderListVC.view.heightAnchor.constraint(equalToConstant: 800)
+            // MARK: 왜 위 코드는 되고 아래 코드는 안되는지?....
+//             orderListVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     
