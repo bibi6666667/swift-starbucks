@@ -59,14 +59,12 @@ extension OrderListViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OrderListViewCell.identifier, for: indexPath) as? OrderListViewCell else {
             return UICollectionViewCell()
         }
-        // cell settings
-        cell.backgroundColor = .systemPink
         return cell
     }
 }
 
 extension OrderListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: orderListView.frame.width, height: 100)
+        return CGSize(width: orderListView.frame.width, height: 120)
     }
 }
