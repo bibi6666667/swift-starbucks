@@ -62,10 +62,8 @@ class HomeYourRecommandViewController: UIViewController {
     
     private func setYourRecommandProductImages(index: Int, productCD: String) {
         networkManager.getProductImage(productCD: productCD) { productImage in
-            // file: [File]
-            // MARK: API 응답에서 file이 비어있는 경우가 존재함..
             if !productImage.file.isEmpty {
-                let productImageFile = productImage.file[0] // 위험..
+                let productImageFile = productImage.file[0]
                 guard let productImageURL = URL(string: productImageFile.imgUPLOADPATH + productImageFile.filePATH) else {
                     return
                 }
@@ -127,7 +125,7 @@ extension HomeYourRecommandViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeYourRecommandViewCell.identifier, for: indexPath) as? HomeYourRecommandViewCell else {
             return UICollectionViewCell()
         }
-        let menuName = yourRecommandProductNames[indexPath.item] // 메뉴이름
+        let menuName = yourRecommandProductNames[indexPath.item]
         cell.setMenuNameLabel(name: menuName)
         let menuImage = yourRecommandProductImages[indexPath.item]
         cell.setMenuImageView(image: menuImage)

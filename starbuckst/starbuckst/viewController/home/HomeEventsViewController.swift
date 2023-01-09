@@ -49,7 +49,6 @@ class HomeEventsViewController: UIViewController {
             let event = eventList[index]
             setEventsTitles(index: index, event: event)
             setEventsImages(index: index, event: event)
-            // setEventsContents?
         }
     }
     
@@ -60,8 +59,9 @@ class HomeEventsViewController: UIViewController {
     
     private func setEventsTitles(index: Int, event: List) {
         self.eventsTitles[index] = event.title
-        DispatchQueue.main.async {
-            self.eventsView.reloadData()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.eventsView.reloadData()
         }
     }
     
@@ -69,12 +69,14 @@ class HomeEventsViewController: UIViewController {
         guard let eventImageURL = URL(string: event.imgUPLOADPATH + "/upload/promotion/" + event.mobTHUM) else {
             return
         }
+        
         let eventImageItem = ImageItem(url: eventImageURL)
         self.imageCacheManager.loadImage(url: eventImageURL as NSURL, imageItem: eventImageItem) { (imageItem, uiImage) in
             if let uiImage = uiImage {
                 self.eventsImages[index] = uiImage
-                DispatchQueue.main.async {
-                    self.eventsView.reloadData()
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.eventsView.reloadData()
                 }
             }
         }
@@ -96,7 +98,6 @@ class HomeEventsViewController: UIViewController {
             seeAllButton.topAnchor.constraint(equalTo: self.view.topAnchor),
             seeAllButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             seeAllButton.heightAnchor.constraint(equalToConstant: 30),
-            // seeAllButton.bottomAnchor.constraint(equalTo: eventsView.topAnchor)
         ])
     }
     
@@ -106,7 +107,6 @@ class HomeEventsViewController: UIViewController {
             eventsView.topAnchor.constraint(equalTo: seeAllButton.bottomAnchor),
             eventsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             eventsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            // eventsView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
             eventsView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
@@ -128,15 +128,14 @@ extension HomeEventsViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let eventTitle = eventsTitles[indexPath.item]
-        cell.setEventTitleLabel(title: eventTitle)
-        let eventImage = eventsImages[indexPath.item] // 이미지가 잘 안뜸..
-        cell.setEventImageView(image: eventImage)
-        // setEventContentLabel ??
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { // 셀 아이템 선택 시
+        let eventImage = eventsImages[indexPath.item]
         
+        DispatchQueue.main.async {
+            cell.setEventTitleLabel(title: eventTitle)
+            cell.setEventImageView(image: eventImage)
+        }
+        
+        return cell
     }
 }
 
