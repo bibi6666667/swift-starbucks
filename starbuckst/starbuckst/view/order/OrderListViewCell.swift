@@ -14,7 +14,8 @@ class OrderListViewCell: UICollectionViewCell {
     private let menuImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "sampleMenu")
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 60
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -22,6 +23,7 @@ class OrderListViewCell: UICollectionViewCell {
         var stackView = OrderListViewCellInfo()
         stackView.axis = .vertical
         stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
         stackView.spacing = 5
         return stackView
     }()
@@ -55,7 +57,6 @@ class OrderListViewCell: UICollectionViewCell {
         menuImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             menuImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            menuImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             menuImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             menuImageView.widthAnchor.constraint(equalToConstant: 120),
             menuImageView.heightAnchor.constraint(equalToConstant: 120),
@@ -67,7 +68,7 @@ class OrderListViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             menuInfoStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             menuInfoStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            menuInfoStackView.leadingAnchor.constraint(equalTo: menuImageView.trailingAnchor, constant: 5),
+            menuInfoStackView.leadingAnchor.constraint(equalTo: menuImageView.trailingAnchor, constant: 10),
             menuInfoStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             menuInfoStackView.heightAnchor.constraint(equalToConstant: 120),
         ])
