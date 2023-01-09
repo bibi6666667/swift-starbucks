@@ -23,8 +23,8 @@
 		006D2BD72831F3540077CF88 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D2BD62831F3540077CF88 /* NetworkManager.swift */; };
 		006D2BD92831F8D90077CF88 /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D2BD82831F8D90077CF88 /* HomeData.swift */; };
 		006D2BDD283243470077CF88 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D2BDC283243470077CF88 /* ImageCacheManager.swift */; };
-		008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DC282B875100F2E826 /* UIColorExtension.swift */; };
-		008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */; };
+		008CA9DD282B875100F2E826 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DC282B875100F2E826 /* UIColor+Extension.swift */; };
+		008CA9DF282B8A5C00F2E826 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9DE282B8A5C00F2E826 /* UIFont+Extension.swift */; };
 		008CA9E4282B8E3700F2E826 /* Santana-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */; };
 		008CA9F2282CB47600F2E826 /* HorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9F1282CB47600F2E826 /* HorizontalCollectionView.swift */; };
 		008CA9F7282CF7CD00F2E826 /* HomeYourRecommandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */; };
@@ -63,8 +63,8 @@
 		006D2BD62831F3540077CF88 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		006D2BD82831F8D90077CF88 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		006D2BDC283243470077CF88 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
-		008CA9DC282B875100F2E826 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		008CA9DC282B875100F2E826 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		008CA9DE282B8A5C00F2E826 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		008CA9E3282B8DAE00F2E826 /* Santana-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Santana-Black.ttf"; sourceTree = "<group>"; };
 		008CA9F1282CB47600F2E826 /* HorizontalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionView.swift; sourceTree = "<group>"; };
 		008CA9F6282CF7CD00F2E826 /* HomeYourRecommandHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeYourRecommandHeader.swift; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 		008CA9DB282B873500F2E826 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				008CA9DC282B875100F2E826 /* UIColorExtension.swift */,
-				008CA9DE282B8A5C00F2E826 /* UIFontExtension.swift */,
+				008CA9DC282B875100F2E826 /* UIColor+Extension.swift */,
+				008CA9DE282B8A5C00F2E826 /* UIFont+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -347,11 +347,11 @@
 				006D2BD22831ECEC0077CF88 /* HTTPMethod.swift in Sources */,
 				00B99ED528290A0500A4B2B6 /* SceneDelegate.swift in Sources */,
 				00332DED283639EF002434EE /* VerticalCollectionView.swift in Sources */,
-				008CA9DD282B875100F2E826 /* UIColorExtension.swift in Sources */,
+				008CA9DD282B875100F2E826 /* UIColor+Extension.swift in Sources */,
 				00344323282E6EFA0087795B /* HomeEvents.swift in Sources */,
 				00B99EE72829562D00A4B2B6 /* HomeViewController.swift in Sources */,
 				00344329282EA2ED0087795B /* HomeThisTimeRecommandHeader.swift in Sources */,
-				008CA9DF282B8A5C00F2E826 /* UIFontExtension.swift in Sources */,
+				008CA9DF282B8A5C00F2E826 /* UIFont+Extension.swift in Sources */,
 				00332DEB283639B5002434EE /* OrderHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
