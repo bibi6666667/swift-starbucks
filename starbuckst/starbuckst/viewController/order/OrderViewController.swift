@@ -97,8 +97,6 @@ class OrderViewController: UIViewController {
             orderListVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             orderListVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
              orderListVC.view.heightAnchor.constraint(equalToConstant: 800)
-            // MARK: 왜 위 코드는 되고 아래 코드는 안되는지?....
-//             orderListVC.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     

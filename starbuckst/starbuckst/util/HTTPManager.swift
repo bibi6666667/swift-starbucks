@@ -12,27 +12,24 @@ import os
 final class HTTPManager {
 
     static func requestGET(url: String, complete: @escaping (Data) -> ()) {
-      // complete @escaping  : 클로저가 바로 실행되지 않고, 조건에 해당될 때 클로저가 실행됨
         guard let validURL = URL(string: url) else { return }
 
-        var urlRequest = URLRequest(url: validURL) // URL에 보내는 URLRequest 생성
+        var urlRequest = URLRequest(url: validURL)
         urlRequest.httpMethod = HTTPMethod.get.description
 
         URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
-            // 비동기!! -> 서버에서 요청이 처리된 다음 실행되는 부분.
-                        // dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
-                        // completion handler의 내용은 모두 옵셔널로 넘어온다.
+            
             guard let data = data else { return }
             guard let response = urlResponse as? HTTPURLResponse,
-                                    (200..<300).contains(response.statusCode) else { // response를 HTTPURLResponse로 바꿨을 때 statusCode가 200번대(성공)이면 계속 진행
+                                    (200..<300).contains(response.statusCode) else {
                 if let response = urlResponse as? HTTPURLResponse {
-                    os_log("%@", "\(response.statusCode)") // 아니라면 statusCode 출력
+                    os_log("%@", "\(response.statusCode)")
                 }
                 return
             }
 
-            complete(data) // complete에 담겨 온 디코더 클로저에 data를 넘김
-        }.resume() // 해당 task를 실행함
+            complete(data)
+        }.resume()
     }
 
     //Post - encode된 Data를 매개변수로 받아옴
@@ -79,7 +76,6 @@ final class HTTPManager {
         }.resume()
     }
     
-    //Patch - Post와 비슷함
     static func requestPATCH(url: String, encodingData: Data, complete: @escaping (Data) -> ()) {
         guard let validURL = URL(string: url) else { return }
 
@@ -102,7 +98,6 @@ final class HTTPManager {
         }.resume()
     }
 
-    // Delete
     static func requestDELETE(url: String, encodingData: Data, complete: @escaping (Data) -> ()) {
         guard let validURL = URL(string: url) else { return }
         var urlRequest = URLRequest(url: validURL)

@@ -15,6 +15,8 @@ final class NetworkManager {
     static let identifier = "NetworkManager"
     static let homeDataNotification = "HomeDataNotificationName"
     
+    private init() { }
+    
     func getHomeData(completion: @escaping (HomeData?) -> Void) { // escaping 클로저 : 리턴타입처럼 사용
         HTTPManager.requestGET(url: "https://api.codesquad.kr/starbuckst") { data in
             // get요청의 CompletionHandler로 JSON Decoder를 보냄 : 응답 정보를 Swift객체로 변환하기 위해

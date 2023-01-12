@@ -18,7 +18,6 @@ class OrderListViewController: UIViewController {
         self.orderListView.dataSource = self
         self.orderListView.register(OrderListViewCell.self, forCellWithReuseIdentifier: OrderListViewCell.identifier)
         
-        // setChild()
         setViews()
         setViewConstraints()
     }
@@ -27,7 +26,6 @@ class OrderListViewController: UIViewController {
     
     private func setViews() {
         self.view.addSubview(orderListView)
-        //orderListView.backgroundColor = .blue
     }
     
     private func setViewConstraints() {

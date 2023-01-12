@@ -40,7 +40,7 @@ class OrderHeaderView: UIView {
     private func configureHeaderLabelConstraint() {
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             headerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             headerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])

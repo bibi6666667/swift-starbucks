@@ -40,9 +40,6 @@ class OrderListViewCell: UICollectionViewCell {
         setUIConstraints()
     }
     
-    // set Image
-    // set Info
-    
     private func setUI() {
         self.addSubview(menuImageView)
         self.addSubview(menuInfoStackView)
@@ -57,7 +54,7 @@ class OrderListViewCell: UICollectionViewCell {
         menuImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             menuImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            menuImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            menuImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
             menuImageView.widthAnchor.constraint(equalToConstant: 120),
             menuImageView.heightAnchor.constraint(equalToConstant: 120),
         ])
@@ -68,7 +65,7 @@ class OrderListViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             menuInfoStackView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             menuInfoStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            menuInfoStackView.leadingAnchor.constraint(equalTo: menuImageView.trailingAnchor, constant: 10),
+            menuInfoStackView.leadingAnchor.constraint(equalTo: menuImageView.trailingAnchor, constant: 20),
             menuInfoStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             menuInfoStackView.heightAnchor.constraint(equalToConstant: 120),
         ])

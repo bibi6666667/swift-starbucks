@@ -17,5 +17,6 @@ class HorizontalCollectionView: UICollectionView {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.isScrollEnabled = true
     }
 }
